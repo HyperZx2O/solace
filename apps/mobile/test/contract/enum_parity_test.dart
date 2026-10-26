@@ -11,8 +11,8 @@ void main() {
   final contract = File('../../services/api/openapi.yaml');
   final generatedRoot = Directory('../../packages/api-client/lib/src/model');
 
-  Map<String, dynamic> readYaml(String path) =>
-      loadYaml(File(path).readAsStringSync()) as Map<String, dynamic>;
+  Map readYaml(String path) =>
+      loadYaml(File(path).readAsStringSync()) as Map;
 
   test('contract and generated enum files exist', () {
     expect(contract.existsSync(), isTrue);

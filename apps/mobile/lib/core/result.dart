@@ -39,8 +39,9 @@ class FailureDetail {
 
   /// Contract `ErrorCode` from the generated client, or `null` when no
   /// envelope was ever received (network down, deserialisation failed,
-  /// unparseable body). Always nulls-or-ErrorCode; never free-form text.
-  final Enum? code;
+  /// unparseable body). Typed as [Object] because the generated enum is a
+  /// built_value `EnumClass`, not a Dart `enum`.
+  final Object? code;
 
   /// Short, non-clinical description. Never contains request or response
   /// bodies (Global rule 5).
@@ -50,5 +51,5 @@ class FailureDetail {
   final Object? cause;
 
   @override
-  String toString() => 'Failure(${code?.name ?? 'offline'}, $message)';
+  String toString() => 'Failure(${code ?? 'offline'}, $message)';
 }

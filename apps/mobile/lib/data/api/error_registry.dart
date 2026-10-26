@@ -10,7 +10,7 @@ export 'package:between_api/between_api.dart' show ErrorCode;
 
 import 'package:between_api/between_api.dart' as api;
 
-import '../core/result.dart';
+import '../../core/result.dart';
 
 /// Maps a generated [api.ErrorCode] to a [FailureDetail]. Call sites pass the
 /// message from the envelope; the code stays the contract's enum.

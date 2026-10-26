@@ -19,7 +19,7 @@ void main() {
   test('sealed hierarchy can be switched exhaustively', () {
     String label(Result<bool> r) => switch (r) {
           Success(value: final v) => 'ok:$v',
-          Failure(detail: final d) => 'bad:${d.code?.name ?? 'offline'}',
+          Failure(detail: final d) => 'bad:${d.code ?? 'offline'}',
         };
     expect(label(const Success(true)), 'ok:true');
     expect(
