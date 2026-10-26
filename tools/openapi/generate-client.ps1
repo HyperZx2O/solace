@@ -12,10 +12,33 @@ param(
     [string]$RepoRoot = (Join-Path $PSScriptRoot '..\..')
 )
 
-$FlutterRoot = if ($env:FLUTTER_ROOT) { $env:FLUTTER_ROOT } else { "C:\src\flutter" }
-$Dart = Join-Path $FlutterRoot "bin\dart.bat"
-if (-not (Test-Path $Dart)) {
-    $Dart = "dart"
+$FlutterRoot = $null
+$candidates = @(
+    $env:FLUTTER_ROOT,
+    "C:\src\flutter",
+    "D:\src\flutter",
+    "E:\src\flutter",
+    "C:\flutter",
+    "D:\flutter"
+) | Where-Object { $_ }
+foreach ($c in $candidates) {
+    $dartBat = Join-Path $c "bin\dart.bat"
+    $dartExe = Join-Path $c "bin\dart.exe"
+    if (Test-Path $dartBat) { $FlutterRoot = $c; break }
+    if (Test-Path $dartExe) { $FlutterRoot = $c; break }
+}
+if (-not $FlutterRoot) {
+    $onPath = Get-Command dart -ErrorAction SilentlyContinue
+    if ($onPath) { $Dart = $onPath.Source }
+    else {
+        throw "Could not locate the Dart SDK. Set FLUTTER_ROOT to your Flutter installation (e.g. C:\src\flutter)."
+    }
+} else {
+    $dartBat = Join-Path $FlutterRoot "bin\dart.bat"
+    $dartExe = Join-Path $FlutterRoot "bin\dart.exe"
+    if (Test-Path $dartBat) { $Dart = $dartBat }
+    elseif (Test-Path $dartExe) { $Dart = $dartExe }
+    else { throw "Dart binary not found under $FlutterRoot\bin" }
 }
 $Contract = (Resolve-Path (Join-Path $RepoRoot 'services\api\openapi.yaml')).Path -replace '\\','/'
 # dart-dio output is a standalone package (imports package:between_api/...),
