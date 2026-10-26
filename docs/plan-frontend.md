@@ -312,7 +312,7 @@ Generated code lives in `design/tokens.g.dart` and `data/api/`. Both are committ
 
 - [x] Phase 0: Requirements & Architecture
 - [x] Phase 1: Repository Scaffold & Project Skeleton
-- [ ] Phase 2: Core Domain / Data Model (client models and local entities)
+- [x] Phase 2: Core Domain / Data Model (client models and local entities)
 - [ ] Phase 3: Primary Interface (patient screens)
 - [ ] Phase 4: Secondary Interface (therapist role)
 - [ ] Phase 5: Client Logic Layer (offline queue, copy rules, presentation)
@@ -446,10 +446,10 @@ Each stage is delivered as pull requests into `main` through the `app/frontend` 
 
 ### Acceptance Criteria
 
-- [ ] Generated client compiles against the frozen contract.
-- [ ] A local queue row cannot be created without `clientId` and `clientCreatedAt`.
-- [ ] The therapist patient data is not in any table (a test asserts the schema).
-- [ ] Every enum value in the client matches the contract (a test compares them).
+- [x] Generated client compiles against the frozen contract.
+- [x] A local queue row cannot be created without `clientId` and `clientCreatedAt`.
+- [x] The therapist patient data is not in any table (a test asserts the schema).
+- [x] Every enum value in the client matches the contract (a test compares them).
 
 ### Common Pitfalls
 
