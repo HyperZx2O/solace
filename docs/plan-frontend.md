@@ -311,7 +311,7 @@ Generated code lives in `design/tokens.g.dart` and `data/api/`. Both are committ
 ## Phase Checklist
 
 - [x] Phase 0: Requirements & Architecture
-- [ ] Phase 1: Repository Scaffold & Project Skeleton
+- [x] Phase 1: Repository Scaffold & Project Skeleton
 - [ ] Phase 2: Core Domain / Data Model (client models and local entities)
 - [ ] Phase 3: Primary Interface (patient screens)
 - [ ] Phase 4: Secondary Interface (therapist role)
@@ -407,13 +407,13 @@ Each stage is delivered as pull requests into `main` through the `app/frontend` 
 
 ### Acceptance Criteria
 
-- [ ] `flutter --version` reports 3.47 stable.
-- [ ] `flutter build apk --debug` completes.
-- [ ] `flutter run` boots on an emulator at API 36 and shows the smoke route.
-- [ ] A missing `API_BASE_URL` in debug stops startup with a clear message.
-- [ ] The redaction test passes.
-- [ ] Every token in `tokens.json` has a generated Dart constant, and the generated file matches a fresh regeneration.
-- [ ] `flutter analyze` reports zero issues.
+- [x] `flutter --version` reports 3.47 stable. *(3.47.7)*
+- [x] `flutter build apk --debug` completes. *(built, then booted on emulator)*
+- [x] `flutter run` boots on an emulator at API 36 and shows the smoke route. *(AVD `between_api36`, screenshot recorded in session)*
+- [x] A missing `API_BASE_URL` in debug stops startup with a clear message. *(assert in `main()` + `test/config/env_test.dart`)*
+- [x] The redaction test passes. *(+14 others; suite green)*
+- [x] Every token in `tokens.json` has a generated Dart constant, and the generated file matches a fresh regeneration. *(idempotence verified twice)*
+- [x] `flutter analyze` reports zero issues.
 
 ### Common Pitfalls
 
