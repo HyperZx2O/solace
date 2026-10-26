@@ -1,0 +1,12 @@
+{
+  "name": "@between/design-tokens",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared design tokens for Between (landing + Flutter app). Source: apps/landing/app/flowstate.css :root.",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "style-dictionary": "^4.3.0"
+  }
+}

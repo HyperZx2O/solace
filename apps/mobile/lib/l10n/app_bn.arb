@@ -1,0 +1,10 @@
+{
+  "@@locale": "bn",
+  "appTitle": "Between",
+  "smokeTitle": "Between",
+  "smokeSubtitle": "মন ভারী হলেও এই অ্যাপটি আপনি খুলতে পারবেন।",
+  "smokeEnvLabel": "dev এনভায়রনমেন্ট",
+  "@smokeEnvLabel": {
+    "description": "Small footer label showing the active environment; replaced by real screens from Phase 3 onward. Bangla copy pending therapist review (Issues 24/25)."
+  }
+}

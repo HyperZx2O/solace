@@ -1,0 +1,10 @@
+{
+  "@@locale": "en",
+  "appTitle": "Between",
+  "smokeTitle": "Between",
+  "smokeSubtitle": "You can open this app even when things feel heavy.",
+  "smokeEnvLabel": "dev environment",
+  "@smokeEnvLabel": {
+    "description": "Small footer label showing the active environment; replaced by real screens from Phase 3 onward."
+  }
+}

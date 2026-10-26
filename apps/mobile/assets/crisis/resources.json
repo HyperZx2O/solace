@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "note": "Placeholder rows. Every real resource needs: named owner, verified number, operating hours, and a lastVerifiedAt date. Verified against spec 10.5 / Build Note 4 before any real user sees this file.",
+    "verifiedBeforeLoad": false
+  },
+  "resources": [
+    {
+      "id": "kaan-pete-roi",
+      "name": "Kaan Pete Roi",
+      "number": "UNVERIFIED",
+      "hours": "UNVERIFIED",
+      "lastVerifiedAt": null,
+      "unverified": true
+    },
+    {
+      "id": "national-emergency",
+      "name": "National emergency number",
+      "number": "999",
+      "hours": "24 hours",
+      "lastVerifiedAt": null,
+      "unverified": true
+    }
+  ]
+}
