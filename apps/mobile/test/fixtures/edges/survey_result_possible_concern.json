@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "data": {
+    "id": "00000000-0000-4000-8000-000000000020",
+    "surveyId": "00000000-0000-4000-8000-000000000021",
+    "totalScore": 12,
+    "scores": {
+      "phq9_1": 1,
+      "phq9_2": 2
+    },
+    "possibleConcern": true,
+    "createdAt": "2026-10-26T06:30:00Z"
+  },
+  "timestamp": "2026-10-26T06:30:01Z",
+  "error": null
+}

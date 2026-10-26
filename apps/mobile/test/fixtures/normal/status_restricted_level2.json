@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "data": {
+    "restrictionLevel": "level2",
+    "copyKey": "status.level2",
+    "invitePending": true,
+    "monitoringOn": true
+  },
+  "timestamp": "2026-10-26T09:00:00Z",
+  "error": null
+}

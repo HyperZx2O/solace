@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "data": {
+    "id": "00000000-0000-4000-8000-00000000000a",
+    "clientId": "00000000-0000-4000-8000-00000000000b",
+    "mood": 6,
+    "feelingWords": ["tired", "hopeful"],
+    "bodySignal": "heavy shoulders",
+    "taskReflection": null,
+    "clientCreatedAt": "2026-10-26T08:05:00Z",
+    "serverReceivedAt": "2026-10-26T09:30:00Z",
+    "duplicate": true
+  },
+  "timestamp": "2026-10-26T09:30:00Z",
+  "error": null
+}

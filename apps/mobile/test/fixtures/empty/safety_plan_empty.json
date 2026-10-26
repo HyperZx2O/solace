@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "data": {
+    "field1": null,
+    "field2": null,
+    "field3": null,
+    "field4": null,
+    "field5": null,
+    "sharedWithTherapist": false,
+    "updatedAt": "2026-10-26T06:00:00Z"
+  },
+  "timestamp": "2026-10-26T06:00:05Z",
+  "error": null
+}

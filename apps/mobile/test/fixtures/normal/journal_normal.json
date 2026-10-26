@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "data": {
+    "id": "00000000-0000-4000-8000-000000000010",
+    "kind": "recovery",
+    "clientId": "00000000-0000-4000-8000-000000000011",
+    "clientCreatedAt": "2026-10-26T07:30:00Z",
+    "serverReceivedAt": "2026-10-26T07:30:03Z",
+    "analysisStatus": "pending",
+    "historical": false,
+    "duplicate": false
+  },
+  "timestamp": "2026-10-26T07:30:03Z",
+  "error": null
+}

@@ -1,0 +1,9 @@
+{
+  "success": false,
+  "data": null,
+  "timestamp": "2026-10-26T09:46:00Z",
+  "error": {
+    "code": "DEPENDENCY_UNAVAILABLE",
+    "message": "A service the request depends on is unavailable."
+  }
+}

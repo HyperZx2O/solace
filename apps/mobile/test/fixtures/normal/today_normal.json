@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "data": {
+    "task": {
+      "id": "00000000-0000-4000-8000-000000000001",
+      "taskKey": "box_breathing",
+      "title": "Box breathing (4-4-4-4)",
+      "assignedFor": "2026-10-26",
+      "completedAt": null,
+      "swapReason": null
+    },
+    "canSwap": true,
+    "checkInDone": false,
+    "reflectionAvailable": false
+  },
+  "timestamp": "2026-10-26T09:15:00Z",
+  "error": null
+}

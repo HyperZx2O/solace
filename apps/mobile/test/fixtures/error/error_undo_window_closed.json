@@ -1,0 +1,9 @@
+{
+  "success": false,
+  "data": null,
+  "timestamp": "2026-10-26T09:45:00Z",
+  "error": {
+    "code": "UNDO_WINDOW_CLOSED",
+    "message": "The undo window has passed."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": "00000000-0000-4000-8000-000000000030",
+      "clientId": "00000000-0000-4000-8000-000000000031",
+      "mood": 4,
+      "feelingWords": ["flat"],
+      "bodySignal": null,
+      "taskReflection": null,
+      "clientCreatedAt": "2026-10-24T08:00:00Z",
+      "serverReceivedAt": "2026-10-24T08:00:02Z",
+      "duplicate": false
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000032",
+      "clientId": "00000000-0000-4000-8000-000000000033",
+      "mood": 6,
+      "feelingWords": ["calm"],
+      "bodySignal": null,
+      "taskReflection": null,
+      "clientCreatedAt": "2026-10-25T08:01:00Z",
+      "serverReceivedAt": "2026-10-25T08:01:02Z",
+      "duplicate": false
+    },
+    {
+      "id": "00000000-0000-4000-8000-000000000034",
+      "clientId": "00000000-0000-4000-8000-000000000035",
+      "mood": 5,
+      "feelingWords": ["tired"],
+      "bodySignal": "heavy shoulders",
+      "taskReflection": null,
+      "clientCreatedAt": "2026-10-26T08:05:00Z",
+      "serverReceivedAt": "2026-10-26T08:05:02Z",
+      "duplicate": false
+    }
+  ],
+  "timestamp": "2026-10-26T07:00:00Z",
+  "error": null
+}

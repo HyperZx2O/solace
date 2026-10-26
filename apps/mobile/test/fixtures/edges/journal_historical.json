@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "data": {
+    "id": "00000000-0000-4000-8000-000000000012",
+    "kind": "personal",
+    "clientId": "00000000-0000-4000-8000-000000000013",
+    "clientCreatedAt": "2026-10-20T12:00:00Z",
+    "serverReceivedAt": "2026-10-26T09:40:00Z",
+    "analysisStatus": "succeeded",
+    "historical": true,
+    "duplicate": false
+  },
+  "timestamp": "2026-10-26T09:40:00Z",
+  "error": null
+}
