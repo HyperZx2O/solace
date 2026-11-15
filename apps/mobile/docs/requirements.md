@@ -1,4 +1,4 @@
-# Between — Android App Requirements (frontend)
+# Solace — Android App Requirements (frontend)
 
 > Source: `docs/trauma-recovery-app-project-idea.md` (spec) sections 2, 4, 6, 7, 8, 10, 11, 12, 13, 14, 15, 17. Scope: what the Flutter app owns. Where the spec describes server-owned behaviour (alert states, escalation timers, restriction levels, task selection, stage model), the requirement is to **display what the server returns** — never to compute it (Global Rule 2, backend ADR-9).
 >

@@ -1,4 +1,4 @@
-# Between — App Architecture
+# Solace — App Architecture
 
 > Frontend architecture for `apps/mobile` (Flutter 3.47, Android 24–36). Companion to `apps/mobile/docs/requirements.md` and `docs/plan-frontend.md`. ADRs live in `docs/plan-frontend.md` (F-ADR-1..10).
 

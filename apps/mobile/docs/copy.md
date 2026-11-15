@@ -1,4 +1,4 @@
-# Between — Copy Rules (draft for Phase 5 review)
+# Solace — Copy Rules (draft for Phase 5 review)
 
 > Phase 0 task: reviewed against spec 6.7, 11.5, 12.3 and plan Global Rules 6, 15. Final Bangla wording requires the therapist/mentor review (spec Issues 24, 25) — every Bangla string stays `[REVIEW-PENDING]` until then.
 >
@@ -22,7 +22,7 @@ Registers never mix in one string or one screen.
 4. **No stage language.** No "Stage", no level numbers, no phase names anywhere in patient copy. Placement wording is "your starting point will adjust as the app learns more about you."
 5. **Offline is a state, not an error.** "You're offline right now. Your safety plan and crisis resources are still available below." Dimmed: "This needs a connection. Your grounding tools are available now." Sync failure: "Couldn't save your entries. We'll try again shortly."
 6. **Restrictions are protective, not punitive.** Explain in advance; never use "locked", "blocked", "banned" in patient copy about features — "not available right now" with the reason and what stays open.
-7. **Notification limits (spec 6.7):** <10 words push, <30 words body, address the person, never imply observation ("we noticed", "detected" — forbidden on the patient side), max-one-per-type-per-day copy never contradicted by the UI. Lock-screen public text: "Between: you have a message" shape only.
+7. **Notification limits (spec 6.7):** <10 words push, <30 words body, address the person, never imply observation ("we noticed", "detected" — forbidden on the patient side), max-one-per-type-per-day copy never contradicted by the UI. Lock-screen public text: "Solace: you have a message" shape only.
 8. **Two equal choices are visually and textually equal.** Journal access request and consent prompts: Accept/Decline identical in size, colour and tone; decline copy never implies wrongdoing.
 9. **Journal privacy point-of-choice** (before writing): *"Your therapist won't see this, but the app still scans for safety signals to protect you."* — for the Recovery Journal.
    `[COPY-BLOCKED]` Personal Journal point-of-choice wording depends on spec 22.2 conflict #4 (does safety scanning cover the Personal Journal?). Neutral interim wording: "This journal stays between you and the app. You can change this anytime." Blocked until the owner resolves the conflict and records it. No patient may be promised scanning behaviour the system hasn't decided on.
