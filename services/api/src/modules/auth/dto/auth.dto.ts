@@ -25,7 +25,7 @@ export class SignupDto {
 
   /** OD-3: under-18 signup is blocked. The client cannot override this. */
   @IsBoolean()
-  @Equals(true, { message: 'You must be 18 or older to use Between' })
+  @Equals(true, { message: 'You must be 18 or older to use Solace' })
   ageConfirmed!: boolean;
 
   @IsOptional()

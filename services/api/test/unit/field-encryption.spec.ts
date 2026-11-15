@@ -76,7 +76,7 @@ describe('AES-256-GCM field encryption (ADR-6)', () => {
 });
 
 describe('field key provider', () => {
-  const envVar = 'BETWEEN_TEST_FIELD_KEY';
+  const envVar = 'Solace_TEST_FIELD_KEY';
   const original = process.env[envVar];
 
   afterEach(() => {
@@ -88,8 +88,8 @@ describe('field key provider', () => {
   });
 
   it('derives a deterministic local key for dev:// and test:// refs', () => {
-    const first = createKeyProvider(config('dev://between-field-key'));
-    const second = createKeyProvider(config('dev://between-field-key'));
+    const first = createKeyProvider(config('dev://Solace-field-key'));
+    const second = createKeyProvider(config('dev://Solace-field-key'));
     expect(first.current().key).toHaveLength(32);
     expect(first.current().key.equals(second.current().key)).toBe(true);
     expect(first.current().keyId).toBe('local:v1');

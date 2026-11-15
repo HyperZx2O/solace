@@ -24,7 +24,7 @@ const THERAPIST_EMAIL = `therapist@${SYNTHETIC_EMAIL_DOMAIN}`;
 const PATIENT_EMAIL = `patient@${SYNTHETIC_EMAIL_DOMAIN}`;
 
 /** argon2id hash of the development-only password below. Not a real credential. */
-const DEV_PASSWORD = 'between-dev-password-not-real';
+const DEV_PASSWORD = 'solace-dev-password-not-real';
 const DEV_PASSWORD_HASH =
   '$argon2id$v=19$m=19456,p=1,t=2$9c+SaQiGWcWlOrMNNHGn5Q$m++nfJ4hJVqHAmHRunUJ1LTmRrz5LisaZzJBeyYFjG8';
 

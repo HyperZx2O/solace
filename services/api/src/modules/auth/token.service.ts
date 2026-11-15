@@ -6,8 +6,8 @@ import type { AppConfig } from '../../config/config';
 import type { Role } from '../../common/enums';
 import type { AccessTokenPayload, RefreshTokenPayload } from './auth.types';
 
-const ISSUER = 'between-api';
-const AUDIENCE = 'between-app';
+const ISSUER = 'Solace-api';
+const AUDIENCE = 'Solace-app';
 const ALGORITHM = 'HS256';
 
 @Injectable()

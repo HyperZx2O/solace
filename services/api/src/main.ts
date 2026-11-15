@@ -44,9 +44,9 @@ async function bootstrap(): Promise<void> {
     {
       port: config.port,
       env: config.nodeEnv,
-      service: 'between-api',
+      service: 'solace-api',
     },
-    'between-api listening',
+    'Solace-api listening',
   );
 }
 

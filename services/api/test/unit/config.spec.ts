@@ -3,8 +3,8 @@ import { ConfigError, loadConfig } from '../../src/config/config';
 const validEnv = (): NodeJS.ProcessEnv => ({
   NODE_ENV: 'development',
   PORT: '3000',
-  DATABASE_URL: 'postgresql://app:app@localhost:5432/between',
-  MIGRATION_DATABASE_URL: 'postgresql://owner:owner@localhost:5432/between',
+  DATABASE_URL: 'postgresql://app:app@localhost:5432/Solace',
+  MIGRATION_DATABASE_URL: 'postgresql://owner:owner@localhost:5432/Solace',
   REDIS_URL: 'redis://localhost:6379',
   JWT_ACCESS_SECRET: 'a'.repeat(32),
   JWT_REFRESH_SECRET: 'b'.repeat(32),
@@ -50,7 +50,7 @@ describe('config', () => {
 
   it('rejects a non-postgres database url', () => {
     const env = validEnv();
-    env.DATABASE_URL = 'mysql://localhost/between';
+    env.DATABASE_URL = 'mysql://localhost/Solace';
     expect(problemsFrom(env).join('\n')).toMatch(/DATABASE_URL must use one of/);
   });
 

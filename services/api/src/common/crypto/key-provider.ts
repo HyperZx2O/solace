@@ -27,7 +27,7 @@ export class LocalKeyProvider implements KeyProvider {
   constructor(ref: string) {
     // Deterministic development/test key derived from the reference. It is not a
     // secret and must never be accepted in production.
-    const key = createHash('sha256').update(`between-field-encryption:${ref}`).digest();
+    const key = createHash('sha256').update(`Solace-field-encryption:${ref}`).digest();
     this.fieldKey = Object.freeze({ keyId: 'local:v1', key });
   }
 

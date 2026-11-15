@@ -42,8 +42,8 @@ describe('append-only tables (database level)', () => {
   it('confirms both roles are connected and distinct', async () => {
     const appRole = await app.query<{ current_user: string }>('SELECT current_user');
     const ownerRole = await owner.query<{ current_user: string }>('SELECT current_user');
-    expect(appRole.rows[0].current_user).toBe('between_app');
-    expect(ownerRole.rows[0].current_user).toBe('between');
+    expect(appRole.rows[0].current_user).toBe('Solace_app');
+    expect(ownerRole.rows[0].current_user).toBe('Solace');
   });
 
   it.each(APPEND_ONLY_TABLES)('refuses UPDATE on %s for the application role', async (table) => {

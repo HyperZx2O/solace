@@ -6,10 +6,10 @@ process.env.NODE_ENV = 'test';
 process.env.PORT = process.env.PORT ?? '3000';
 process.env.DATABASE_URL =
   process.env.DATABASE_URL ??
-  'postgresql://between_app:between_app@localhost:5432/between?schema=public';
+  'postgresql://Solace_app:Solace_app@localhost:5432/Solace?schema=public';
 process.env.MIGRATION_DATABASE_URL =
   process.env.MIGRATION_DATABASE_URL ??
-  'postgresql://between:between@localhost:5432/between?schema=public';
+  'postgresql://Solace:Solace@localhost:5432/Solace?schema=public';
 process.env.REDIS_URL = process.env.REDIS_URL ?? 'redis://localhost:6379';
 process.env.JWT_ACCESS_SECRET =
   process.env.JWT_ACCESS_SECRET ?? 'test-access-secret-0123456789abcdef0123';
