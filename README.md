@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/preview.jpg" alt="Solace landing page" width="100%" />
+  <img src="screenshots/15_landing_hero.png" alt="Solace landing page" width="100%" />
 </p>
 
 <h1 align="center">Solace</h1>
@@ -27,7 +27,7 @@
 ## Preview
 
 <p align="center">
-  <img src="docs/preview-mobile.jpg" alt="Solace on mobile" width="300" />
+  <img src="screenshots/20_landing_mobile.png" alt="Solace on mobile" width="300" />
 </p>
 
 The landing page is one immersive dark hero. A full-bleed WebGL fluid simulation (ink in water)
