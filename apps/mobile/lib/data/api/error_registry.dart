@@ -6,9 +6,9 @@
 /// compares every generated value against the YAML.
 library;
 
-export 'package:between_api/between_api.dart' show ErrorCode;
+export 'package:solace_api/solace_api.dart' show ErrorCode;
 
-import 'package:between_api/between_api.dart' as api;
+import 'package:solace_api/solace_api.dart' as api;
 
 import '../../core/result.dart';
 

@@ -1,24 +1,27 @@
 {
   "meta": {
-    "note": "Placeholder rows. Every real resource needs: named owner, verified number, operating hours, and a lastVerifiedAt date. Verified against spec 10.5 / Build Note 4 before any real user sees this file.",
-    "verifiedBeforeLoad": false
+    "note": "Verified 12 Nov 2026. Kaan Pete Roi against https://kaanpeteroi.org/helpline-service (number, hours, no holidays); 999 against the national emergency service. Every row must keep a named owner, verified number, operating hours and lastVerifiedAt date.",
+    "verifiedBeforeLoad": true
   },
   "resources": [
     {
       "id": "kaan-pete-roi",
       "name": "Kaan Pete Roi",
-      "number": "UNVERIFIED",
-      "hours": "UNVERIFIED",
-      "lastVerifiedAt": null,
-      "unverified": true
+      "owner": "Kaan Pete Roi",
+      "number": "+880 9612-119911",
+      "hours": "3:00 PM to 3:00 AM, daily",
+      "lastVerifiedAt": "12 Nov 2026",
+      "source": "https://kaanpeteroi.org/helpline-service",
+      "unverified": false
     },
     {
       "id": "national-emergency",
       "name": "National emergency number",
+      "owner": "National emergency service, Bangladesh",
       "number": "999",
       "hours": "24 hours",
-      "lastVerifiedAt": null,
-      "unverified": true
+      "lastVerifiedAt": "12 Nov 2026",
+      "unverified": false
     }
   ]
 }

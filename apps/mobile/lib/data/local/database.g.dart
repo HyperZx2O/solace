@@ -2222,6 +2222,17 @@ class $CheckInQueueTable extends CheckInQueue
     requiredDuringInsert: false,
     defaultValue: const Constant('pending'),
   );
+  static const VerificationMeta _clockSkewSecondsMeta = const VerificationMeta(
+    'clockSkewSeconds',
+  );
+  @override
+  late final GeneratedColumn<int> clockSkewSeconds = GeneratedColumn<int>(
+    'clock_skew_seconds',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     clientId,
@@ -2230,6 +2241,7 @@ class $CheckInQueueTable extends CheckInQueue
     attempts,
     nextAttemptAt,
     status,
+    clockSkewSeconds,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -2291,6 +2303,15 @@ class $CheckInQueueTable extends CheckInQueue
         status.isAcceptableOrUnknown(data['status']!, _statusMeta),
       );
     }
+    if (data.containsKey('clock_skew_seconds')) {
+      context.handle(
+        _clockSkewSecondsMeta,
+        clockSkewSeconds.isAcceptableOrUnknown(
+          data['clock_skew_seconds']!,
+          _clockSkewSecondsMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -2324,6 +2345,10 @@ class $CheckInQueueTable extends CheckInQueue
         DriftSqlType.string,
         data['${effectivePrefix}status'],
       )!,
+      clockSkewSeconds: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}clock_skew_seconds'],
+      ),
     );
   }
 
@@ -2341,6 +2366,7 @@ class CheckInQueueData extends DataClass
   final int attempts;
   final DateTime? nextAttemptAt;
   final String status;
+  final int? clockSkewSeconds;
   const CheckInQueueData({
     required this.clientId,
     required this.payload,
@@ -2348,6 +2374,7 @@ class CheckInQueueData extends DataClass
     required this.attempts,
     this.nextAttemptAt,
     required this.status,
+    this.clockSkewSeconds,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -2360,6 +2387,9 @@ class CheckInQueueData extends DataClass
       map['next_attempt_at'] = Variable<DateTime>(nextAttemptAt);
     }
     map['status'] = Variable<String>(status);
+    if (!nullToAbsent || clockSkewSeconds != null) {
+      map['clock_skew_seconds'] = Variable<int>(clockSkewSeconds);
+    }
     return map;
   }
 
@@ -2373,6 +2403,9 @@ class CheckInQueueData extends DataClass
           ? const Value.absent()
           : Value(nextAttemptAt),
       status: Value(status),
+      clockSkewSeconds: clockSkewSeconds == null && nullToAbsent
+          ? const Value.absent()
+          : Value(clockSkewSeconds),
     );
   }
 
@@ -2388,6 +2421,7 @@ class CheckInQueueData extends DataClass
       attempts: serializer.fromJson<int>(json['attempts']),
       nextAttemptAt: serializer.fromJson<DateTime?>(json['nextAttemptAt']),
       status: serializer.fromJson<String>(json['status']),
+      clockSkewSeconds: serializer.fromJson<int?>(json['clockSkewSeconds']),
     );
   }
   @override
@@ -2400,6 +2434,7 @@ class CheckInQueueData extends DataClass
       'attempts': serializer.toJson<int>(attempts),
       'nextAttemptAt': serializer.toJson<DateTime?>(nextAttemptAt),
       'status': serializer.toJson<String>(status),
+      'clockSkewSeconds': serializer.toJson<int?>(clockSkewSeconds),
     };
   }
 
@@ -2410,6 +2445,7 @@ class CheckInQueueData extends DataClass
     int? attempts,
     Value<DateTime?> nextAttemptAt = const Value.absent(),
     String? status,
+    Value<int?> clockSkewSeconds = const Value.absent(),
   }) => CheckInQueueData(
     clientId: clientId ?? this.clientId,
     payload: payload ?? this.payload,
@@ -2419,6 +2455,9 @@ class CheckInQueueData extends DataClass
         ? nextAttemptAt.value
         : this.nextAttemptAt,
     status: status ?? this.status,
+    clockSkewSeconds: clockSkewSeconds.present
+        ? clockSkewSeconds.value
+        : this.clockSkewSeconds,
   );
   CheckInQueueData copyWithCompanion(CheckInQueueCompanion data) {
     return CheckInQueueData(
@@ -2432,6 +2471,9 @@ class CheckInQueueData extends DataClass
           ? data.nextAttemptAt.value
           : this.nextAttemptAt,
       status: data.status.present ? data.status.value : this.status,
+      clockSkewSeconds: data.clockSkewSeconds.present
+          ? data.clockSkewSeconds.value
+          : this.clockSkewSeconds,
     );
   }
 
@@ -2443,7 +2485,8 @@ class CheckInQueueData extends DataClass
           ..write('clientCreatedAt: $clientCreatedAt, ')
           ..write('attempts: $attempts, ')
           ..write('nextAttemptAt: $nextAttemptAt, ')
-          ..write('status: $status')
+          ..write('status: $status, ')
+          ..write('clockSkewSeconds: $clockSkewSeconds')
           ..write(')'))
         .toString();
   }
@@ -2456,6 +2499,7 @@ class CheckInQueueData extends DataClass
     attempts,
     nextAttemptAt,
     status,
+    clockSkewSeconds,
   );
   @override
   bool operator ==(Object other) =>
@@ -2466,7 +2510,8 @@ class CheckInQueueData extends DataClass
           other.clientCreatedAt == this.clientCreatedAt &&
           other.attempts == this.attempts &&
           other.nextAttemptAt == this.nextAttemptAt &&
-          other.status == this.status);
+          other.status == this.status &&
+          other.clockSkewSeconds == this.clockSkewSeconds);
 }
 
 class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
@@ -2476,6 +2521,7 @@ class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
   final Value<int> attempts;
   final Value<DateTime?> nextAttemptAt;
   final Value<String> status;
+  final Value<int?> clockSkewSeconds;
   final Value<int> rowid;
   const CheckInQueueCompanion({
     this.clientId = const Value.absent(),
@@ -2484,6 +2530,7 @@ class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
     this.attempts = const Value.absent(),
     this.nextAttemptAt = const Value.absent(),
     this.status = const Value.absent(),
+    this.clockSkewSeconds = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   CheckInQueueCompanion.insert({
@@ -2493,6 +2540,7 @@ class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
     this.attempts = const Value.absent(),
     this.nextAttemptAt = const Value.absent(),
     this.status = const Value.absent(),
+    this.clockSkewSeconds = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : clientId = Value(clientId),
        payload = Value(payload),
@@ -2504,6 +2552,7 @@ class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
     Expression<int>? attempts,
     Expression<DateTime>? nextAttemptAt,
     Expression<String>? status,
+    Expression<int>? clockSkewSeconds,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -2513,6 +2562,7 @@ class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
       if (attempts != null) 'attempts': attempts,
       if (nextAttemptAt != null) 'next_attempt_at': nextAttemptAt,
       if (status != null) 'status': status,
+      if (clockSkewSeconds != null) 'clock_skew_seconds': clockSkewSeconds,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -2524,6 +2574,7 @@ class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
     Value<int>? attempts,
     Value<DateTime?>? nextAttemptAt,
     Value<String>? status,
+    Value<int?>? clockSkewSeconds,
     Value<int>? rowid,
   }) {
     return CheckInQueueCompanion(
@@ -2533,6 +2584,7 @@ class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
       attempts: attempts ?? this.attempts,
       nextAttemptAt: nextAttemptAt ?? this.nextAttemptAt,
       status: status ?? this.status,
+      clockSkewSeconds: clockSkewSeconds ?? this.clockSkewSeconds,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -2558,6 +2610,9 @@ class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
     if (status.present) {
       map['status'] = Variable<String>(status.value);
     }
+    if (clockSkewSeconds.present) {
+      map['clock_skew_seconds'] = Variable<int>(clockSkewSeconds.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -2573,6 +2628,7 @@ class CheckInQueueCompanion extends UpdateCompanion<CheckInQueueData> {
           ..write('attempts: $attempts, ')
           ..write('nextAttemptAt: $nextAttemptAt, ')
           ..write('status: $status, ')
+          ..write('clockSkewSeconds: $clockSkewSeconds, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -2653,6 +2709,17 @@ class $JournalQueueTable extends JournalQueue
     requiredDuringInsert: false,
     defaultValue: const Constant('pending'),
   );
+  static const VerificationMeta _clockSkewSecondsMeta = const VerificationMeta(
+    'clockSkewSeconds',
+  );
+  @override
+  late final GeneratedColumn<int> clockSkewSeconds = GeneratedColumn<int>(
+    'clock_skew_seconds',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     clientId,
@@ -2661,6 +2728,7 @@ class $JournalQueueTable extends JournalQueue
     attempts,
     nextAttemptAt,
     status,
+    clockSkewSeconds,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -2722,6 +2790,15 @@ class $JournalQueueTable extends JournalQueue
         status.isAcceptableOrUnknown(data['status']!, _statusMeta),
       );
     }
+    if (data.containsKey('clock_skew_seconds')) {
+      context.handle(
+        _clockSkewSecondsMeta,
+        clockSkewSeconds.isAcceptableOrUnknown(
+          data['clock_skew_seconds']!,
+          _clockSkewSecondsMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -2755,6 +2832,10 @@ class $JournalQueueTable extends JournalQueue
         DriftSqlType.string,
         data['${effectivePrefix}status'],
       )!,
+      clockSkewSeconds: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}clock_skew_seconds'],
+      ),
     );
   }
 
@@ -2772,6 +2853,7 @@ class JournalQueueData extends DataClass
   final int attempts;
   final DateTime? nextAttemptAt;
   final String status;
+  final int? clockSkewSeconds;
   const JournalQueueData({
     required this.clientId,
     required this.payload,
@@ -2779,6 +2861,7 @@ class JournalQueueData extends DataClass
     required this.attempts,
     this.nextAttemptAt,
     required this.status,
+    this.clockSkewSeconds,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -2791,6 +2874,9 @@ class JournalQueueData extends DataClass
       map['next_attempt_at'] = Variable<DateTime>(nextAttemptAt);
     }
     map['status'] = Variable<String>(status);
+    if (!nullToAbsent || clockSkewSeconds != null) {
+      map['clock_skew_seconds'] = Variable<int>(clockSkewSeconds);
+    }
     return map;
   }
 
@@ -2804,6 +2890,9 @@ class JournalQueueData extends DataClass
           ? const Value.absent()
           : Value(nextAttemptAt),
       status: Value(status),
+      clockSkewSeconds: clockSkewSeconds == null && nullToAbsent
+          ? const Value.absent()
+          : Value(clockSkewSeconds),
     );
   }
 
@@ -2819,6 +2908,7 @@ class JournalQueueData extends DataClass
       attempts: serializer.fromJson<int>(json['attempts']),
       nextAttemptAt: serializer.fromJson<DateTime?>(json['nextAttemptAt']),
       status: serializer.fromJson<String>(json['status']),
+      clockSkewSeconds: serializer.fromJson<int?>(json['clockSkewSeconds']),
     );
   }
   @override
@@ -2831,6 +2921,7 @@ class JournalQueueData extends DataClass
       'attempts': serializer.toJson<int>(attempts),
       'nextAttemptAt': serializer.toJson<DateTime?>(nextAttemptAt),
       'status': serializer.toJson<String>(status),
+      'clockSkewSeconds': serializer.toJson<int?>(clockSkewSeconds),
     };
   }
 
@@ -2841,6 +2932,7 @@ class JournalQueueData extends DataClass
     int? attempts,
     Value<DateTime?> nextAttemptAt = const Value.absent(),
     String? status,
+    Value<int?> clockSkewSeconds = const Value.absent(),
   }) => JournalQueueData(
     clientId: clientId ?? this.clientId,
     payload: payload ?? this.payload,
@@ -2850,6 +2942,9 @@ class JournalQueueData extends DataClass
         ? nextAttemptAt.value
         : this.nextAttemptAt,
     status: status ?? this.status,
+    clockSkewSeconds: clockSkewSeconds.present
+        ? clockSkewSeconds.value
+        : this.clockSkewSeconds,
   );
   JournalQueueData copyWithCompanion(JournalQueueCompanion data) {
     return JournalQueueData(
@@ -2863,6 +2958,9 @@ class JournalQueueData extends DataClass
           ? data.nextAttemptAt.value
           : this.nextAttemptAt,
       status: data.status.present ? data.status.value : this.status,
+      clockSkewSeconds: data.clockSkewSeconds.present
+          ? data.clockSkewSeconds.value
+          : this.clockSkewSeconds,
     );
   }
 
@@ -2874,7 +2972,8 @@ class JournalQueueData extends DataClass
           ..write('clientCreatedAt: $clientCreatedAt, ')
           ..write('attempts: $attempts, ')
           ..write('nextAttemptAt: $nextAttemptAt, ')
-          ..write('status: $status')
+          ..write('status: $status, ')
+          ..write('clockSkewSeconds: $clockSkewSeconds')
           ..write(')'))
         .toString();
   }
@@ -2887,6 +2986,7 @@ class JournalQueueData extends DataClass
     attempts,
     nextAttemptAt,
     status,
+    clockSkewSeconds,
   );
   @override
   bool operator ==(Object other) =>
@@ -2897,7 +2997,8 @@ class JournalQueueData extends DataClass
           other.clientCreatedAt == this.clientCreatedAt &&
           other.attempts == this.attempts &&
           other.nextAttemptAt == this.nextAttemptAt &&
-          other.status == this.status);
+          other.status == this.status &&
+          other.clockSkewSeconds == this.clockSkewSeconds);
 }
 
 class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
@@ -2907,6 +3008,7 @@ class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
   final Value<int> attempts;
   final Value<DateTime?> nextAttemptAt;
   final Value<String> status;
+  final Value<int?> clockSkewSeconds;
   final Value<int> rowid;
   const JournalQueueCompanion({
     this.clientId = const Value.absent(),
@@ -2915,6 +3017,7 @@ class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
     this.attempts = const Value.absent(),
     this.nextAttemptAt = const Value.absent(),
     this.status = const Value.absent(),
+    this.clockSkewSeconds = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   JournalQueueCompanion.insert({
@@ -2924,6 +3027,7 @@ class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
     this.attempts = const Value.absent(),
     this.nextAttemptAt = const Value.absent(),
     this.status = const Value.absent(),
+    this.clockSkewSeconds = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : clientId = Value(clientId),
        payload = Value(payload),
@@ -2935,6 +3039,7 @@ class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
     Expression<int>? attempts,
     Expression<DateTime>? nextAttemptAt,
     Expression<String>? status,
+    Expression<int>? clockSkewSeconds,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -2944,6 +3049,7 @@ class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
       if (attempts != null) 'attempts': attempts,
       if (nextAttemptAt != null) 'next_attempt_at': nextAttemptAt,
       if (status != null) 'status': status,
+      if (clockSkewSeconds != null) 'clock_skew_seconds': clockSkewSeconds,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -2955,6 +3061,7 @@ class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
     Value<int>? attempts,
     Value<DateTime?>? nextAttemptAt,
     Value<String>? status,
+    Value<int?>? clockSkewSeconds,
     Value<int>? rowid,
   }) {
     return JournalQueueCompanion(
@@ -2964,6 +3071,7 @@ class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
       attempts: attempts ?? this.attempts,
       nextAttemptAt: nextAttemptAt ?? this.nextAttemptAt,
       status: status ?? this.status,
+      clockSkewSeconds: clockSkewSeconds ?? this.clockSkewSeconds,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -2989,6 +3097,9 @@ class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
     if (status.present) {
       map['status'] = Variable<String>(status.value);
     }
+    if (clockSkewSeconds.present) {
+      map['clock_skew_seconds'] = Variable<int>(clockSkewSeconds.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -3004,6 +3115,7 @@ class JournalQueueCompanion extends UpdateCompanion<JournalQueueData> {
           ..write('attempts: $attempts, ')
           ..write('nextAttemptAt: $nextAttemptAt, ')
           ..write('status: $status, ')
+          ..write('clockSkewSeconds: $clockSkewSeconds, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -3084,6 +3196,17 @@ class $CrisisQueueTable extends CrisisQueue
     requiredDuringInsert: false,
     defaultValue: const Constant('pending'),
   );
+  static const VerificationMeta _clockSkewSecondsMeta = const VerificationMeta(
+    'clockSkewSeconds',
+  );
+  @override
+  late final GeneratedColumn<int> clockSkewSeconds = GeneratedColumn<int>(
+    'clock_skew_seconds',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
   @override
   List<GeneratedColumn> get $columns => [
     clientId,
@@ -3092,6 +3215,7 @@ class $CrisisQueueTable extends CrisisQueue
     attempts,
     nextAttemptAt,
     status,
+    clockSkewSeconds,
   ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -3153,6 +3277,15 @@ class $CrisisQueueTable extends CrisisQueue
         status.isAcceptableOrUnknown(data['status']!, _statusMeta),
       );
     }
+    if (data.containsKey('clock_skew_seconds')) {
+      context.handle(
+        _clockSkewSecondsMeta,
+        clockSkewSeconds.isAcceptableOrUnknown(
+          data['clock_skew_seconds']!,
+          _clockSkewSecondsMeta,
+        ),
+      );
+    }
     return context;
   }
 
@@ -3186,6 +3319,10 @@ class $CrisisQueueTable extends CrisisQueue
         DriftSqlType.string,
         data['${effectivePrefix}status'],
       )!,
+      clockSkewSeconds: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}clock_skew_seconds'],
+      ),
     );
   }
 
@@ -3202,6 +3339,7 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
   final int attempts;
   final DateTime? nextAttemptAt;
   final String status;
+  final int? clockSkewSeconds;
   const CrisisQueueData({
     required this.clientId,
     required this.payload,
@@ -3209,6 +3347,7 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
     required this.attempts,
     this.nextAttemptAt,
     required this.status,
+    this.clockSkewSeconds,
   });
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -3221,6 +3360,9 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
       map['next_attempt_at'] = Variable<DateTime>(nextAttemptAt);
     }
     map['status'] = Variable<String>(status);
+    if (!nullToAbsent || clockSkewSeconds != null) {
+      map['clock_skew_seconds'] = Variable<int>(clockSkewSeconds);
+    }
     return map;
   }
 
@@ -3234,6 +3376,9 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
           ? const Value.absent()
           : Value(nextAttemptAt),
       status: Value(status),
+      clockSkewSeconds: clockSkewSeconds == null && nullToAbsent
+          ? const Value.absent()
+          : Value(clockSkewSeconds),
     );
   }
 
@@ -3249,6 +3394,7 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
       attempts: serializer.fromJson<int>(json['attempts']),
       nextAttemptAt: serializer.fromJson<DateTime?>(json['nextAttemptAt']),
       status: serializer.fromJson<String>(json['status']),
+      clockSkewSeconds: serializer.fromJson<int?>(json['clockSkewSeconds']),
     );
   }
   @override
@@ -3261,6 +3407,7 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
       'attempts': serializer.toJson<int>(attempts),
       'nextAttemptAt': serializer.toJson<DateTime?>(nextAttemptAt),
       'status': serializer.toJson<String>(status),
+      'clockSkewSeconds': serializer.toJson<int?>(clockSkewSeconds),
     };
   }
 
@@ -3271,6 +3418,7 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
     int? attempts,
     Value<DateTime?> nextAttemptAt = const Value.absent(),
     String? status,
+    Value<int?> clockSkewSeconds = const Value.absent(),
   }) => CrisisQueueData(
     clientId: clientId ?? this.clientId,
     payload: payload ?? this.payload,
@@ -3280,6 +3428,9 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
         ? nextAttemptAt.value
         : this.nextAttemptAt,
     status: status ?? this.status,
+    clockSkewSeconds: clockSkewSeconds.present
+        ? clockSkewSeconds.value
+        : this.clockSkewSeconds,
   );
   CrisisQueueData copyWithCompanion(CrisisQueueCompanion data) {
     return CrisisQueueData(
@@ -3293,6 +3444,9 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
           ? data.nextAttemptAt.value
           : this.nextAttemptAt,
       status: data.status.present ? data.status.value : this.status,
+      clockSkewSeconds: data.clockSkewSeconds.present
+          ? data.clockSkewSeconds.value
+          : this.clockSkewSeconds,
     );
   }
 
@@ -3304,7 +3458,8 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
           ..write('clientCreatedAt: $clientCreatedAt, ')
           ..write('attempts: $attempts, ')
           ..write('nextAttemptAt: $nextAttemptAt, ')
-          ..write('status: $status')
+          ..write('status: $status, ')
+          ..write('clockSkewSeconds: $clockSkewSeconds')
           ..write(')'))
         .toString();
   }
@@ -3317,6 +3472,7 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
     attempts,
     nextAttemptAt,
     status,
+    clockSkewSeconds,
   );
   @override
   bool operator ==(Object other) =>
@@ -3327,7 +3483,8 @@ class CrisisQueueData extends DataClass implements Insertable<CrisisQueueData> {
           other.clientCreatedAt == this.clientCreatedAt &&
           other.attempts == this.attempts &&
           other.nextAttemptAt == this.nextAttemptAt &&
-          other.status == this.status);
+          other.status == this.status &&
+          other.clockSkewSeconds == this.clockSkewSeconds);
 }
 
 class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
@@ -3337,6 +3494,7 @@ class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
   final Value<int> attempts;
   final Value<DateTime?> nextAttemptAt;
   final Value<String> status;
+  final Value<int?> clockSkewSeconds;
   final Value<int> rowid;
   const CrisisQueueCompanion({
     this.clientId = const Value.absent(),
@@ -3345,6 +3503,7 @@ class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
     this.attempts = const Value.absent(),
     this.nextAttemptAt = const Value.absent(),
     this.status = const Value.absent(),
+    this.clockSkewSeconds = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   CrisisQueueCompanion.insert({
@@ -3354,6 +3513,7 @@ class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
     this.attempts = const Value.absent(),
     this.nextAttemptAt = const Value.absent(),
     this.status = const Value.absent(),
+    this.clockSkewSeconds = const Value.absent(),
     this.rowid = const Value.absent(),
   }) : clientId = Value(clientId),
        payload = Value(payload),
@@ -3365,6 +3525,7 @@ class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
     Expression<int>? attempts,
     Expression<DateTime>? nextAttemptAt,
     Expression<String>? status,
+    Expression<int>? clockSkewSeconds,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -3374,6 +3535,7 @@ class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
       if (attempts != null) 'attempts': attempts,
       if (nextAttemptAt != null) 'next_attempt_at': nextAttemptAt,
       if (status != null) 'status': status,
+      if (clockSkewSeconds != null) 'clock_skew_seconds': clockSkewSeconds,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -3385,6 +3547,7 @@ class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
     Value<int>? attempts,
     Value<DateTime?>? nextAttemptAt,
     Value<String>? status,
+    Value<int?>? clockSkewSeconds,
     Value<int>? rowid,
   }) {
     return CrisisQueueCompanion(
@@ -3394,6 +3557,7 @@ class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
       attempts: attempts ?? this.attempts,
       nextAttemptAt: nextAttemptAt ?? this.nextAttemptAt,
       status: status ?? this.status,
+      clockSkewSeconds: clockSkewSeconds ?? this.clockSkewSeconds,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -3419,6 +3583,9 @@ class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
     if (status.present) {
       map['status'] = Variable<String>(status.value);
     }
+    if (clockSkewSeconds.present) {
+      map['clock_skew_seconds'] = Variable<int>(clockSkewSeconds.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -3434,6 +3601,7 @@ class CrisisQueueCompanion extends UpdateCompanion<CrisisQueueData> {
           ..write('attempts: $attempts, ')
           ..write('nextAttemptAt: $nextAttemptAt, ')
           ..write('status: $status, ')
+          ..write('clockSkewSeconds: $clockSkewSeconds, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();
@@ -4625,6 +4793,7 @@ typedef $$CheckInQueueTableCreateCompanionBuilder =
       Value<int> attempts,
       Value<DateTime?> nextAttemptAt,
       Value<String> status,
+      Value<int?> clockSkewSeconds,
       Value<int> rowid,
     });
 typedef $$CheckInQueueTableUpdateCompanionBuilder =
@@ -4635,6 +4804,7 @@ typedef $$CheckInQueueTableUpdateCompanionBuilder =
       Value<int> attempts,
       Value<DateTime?> nextAttemptAt,
       Value<String> status,
+      Value<int?> clockSkewSeconds,
       Value<int> rowid,
     });
 
@@ -4674,6 +4844,11 @@ class $$CheckInQueueTableFilterComposer
 
   ColumnFilters<String> get status => $composableBuilder(
     column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get clockSkewSeconds => $composableBuilder(
+    column: $table.clockSkewSeconds,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -4716,6 +4891,11 @@ class $$CheckInQueueTableOrderingComposer
     column: $table.status,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<int> get clockSkewSeconds => $composableBuilder(
+    column: $table.clockSkewSeconds,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$CheckInQueueTableAnnotationComposer
@@ -4748,6 +4928,11 @@ class $$CheckInQueueTableAnnotationComposer
 
   GeneratedColumn<String> get status =>
       $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<int> get clockSkewSeconds => $composableBuilder(
+    column: $table.clockSkewSeconds,
+    builder: (column) => column,
+  );
 }
 
 class $$CheckInQueueTableTableManager
@@ -4787,6 +4972,7 @@ class $$CheckInQueueTableTableManager
                 Value<int> attempts = const Value.absent(),
                 Value<DateTime?> nextAttemptAt = const Value.absent(),
                 Value<String> status = const Value.absent(),
+                Value<int?> clockSkewSeconds = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => CheckInQueueCompanion(
                 clientId: clientId,
@@ -4795,6 +4981,7 @@ class $$CheckInQueueTableTableManager
                 attempts: attempts,
                 nextAttemptAt: nextAttemptAt,
                 status: status,
+                clockSkewSeconds: clockSkewSeconds,
                 rowid: rowid,
               ),
           createCompanionCallback:
@@ -4805,6 +4992,7 @@ class $$CheckInQueueTableTableManager
                 Value<int> attempts = const Value.absent(),
                 Value<DateTime?> nextAttemptAt = const Value.absent(),
                 Value<String> status = const Value.absent(),
+                Value<int?> clockSkewSeconds = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => CheckInQueueCompanion.insert(
                 clientId: clientId,
@@ -4813,6 +5001,7 @@ class $$CheckInQueueTableTableManager
                 attempts: attempts,
                 nextAttemptAt: nextAttemptAt,
                 status: status,
+                clockSkewSeconds: clockSkewSeconds,
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
@@ -4857,6 +5046,7 @@ typedef $$JournalQueueTableCreateCompanionBuilder =
       Value<int> attempts,
       Value<DateTime?> nextAttemptAt,
       Value<String> status,
+      Value<int?> clockSkewSeconds,
       Value<int> rowid,
     });
 typedef $$JournalQueueTableUpdateCompanionBuilder =
@@ -4867,6 +5057,7 @@ typedef $$JournalQueueTableUpdateCompanionBuilder =
       Value<int> attempts,
       Value<DateTime?> nextAttemptAt,
       Value<String> status,
+      Value<int?> clockSkewSeconds,
       Value<int> rowid,
     });
 
@@ -4906,6 +5097,11 @@ class $$JournalQueueTableFilterComposer
 
   ColumnFilters<String> get status => $composableBuilder(
     column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get clockSkewSeconds => $composableBuilder(
+    column: $table.clockSkewSeconds,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -4948,6 +5144,11 @@ class $$JournalQueueTableOrderingComposer
     column: $table.status,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<int> get clockSkewSeconds => $composableBuilder(
+    column: $table.clockSkewSeconds,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$JournalQueueTableAnnotationComposer
@@ -4980,6 +5181,11 @@ class $$JournalQueueTableAnnotationComposer
 
   GeneratedColumn<String> get status =>
       $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<int> get clockSkewSeconds => $composableBuilder(
+    column: $table.clockSkewSeconds,
+    builder: (column) => column,
+  );
 }
 
 class $$JournalQueueTableTableManager
@@ -5019,6 +5225,7 @@ class $$JournalQueueTableTableManager
                 Value<int> attempts = const Value.absent(),
                 Value<DateTime?> nextAttemptAt = const Value.absent(),
                 Value<String> status = const Value.absent(),
+                Value<int?> clockSkewSeconds = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => JournalQueueCompanion(
                 clientId: clientId,
@@ -5027,6 +5234,7 @@ class $$JournalQueueTableTableManager
                 attempts: attempts,
                 nextAttemptAt: nextAttemptAt,
                 status: status,
+                clockSkewSeconds: clockSkewSeconds,
                 rowid: rowid,
               ),
           createCompanionCallback:
@@ -5037,6 +5245,7 @@ class $$JournalQueueTableTableManager
                 Value<int> attempts = const Value.absent(),
                 Value<DateTime?> nextAttemptAt = const Value.absent(),
                 Value<String> status = const Value.absent(),
+                Value<int?> clockSkewSeconds = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => JournalQueueCompanion.insert(
                 clientId: clientId,
@@ -5045,6 +5254,7 @@ class $$JournalQueueTableTableManager
                 attempts: attempts,
                 nextAttemptAt: nextAttemptAt,
                 status: status,
+                clockSkewSeconds: clockSkewSeconds,
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0
@@ -5089,6 +5299,7 @@ typedef $$CrisisQueueTableCreateCompanionBuilder =
       Value<int> attempts,
       Value<DateTime?> nextAttemptAt,
       Value<String> status,
+      Value<int?> clockSkewSeconds,
       Value<int> rowid,
     });
 typedef $$CrisisQueueTableUpdateCompanionBuilder =
@@ -5099,6 +5310,7 @@ typedef $$CrisisQueueTableUpdateCompanionBuilder =
       Value<int> attempts,
       Value<DateTime?> nextAttemptAt,
       Value<String> status,
+      Value<int?> clockSkewSeconds,
       Value<int> rowid,
     });
 
@@ -5138,6 +5350,11 @@ class $$CrisisQueueTableFilterComposer
 
   ColumnFilters<String> get status => $composableBuilder(
     column: $table.status,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get clockSkewSeconds => $composableBuilder(
+    column: $table.clockSkewSeconds,
     builder: (column) => ColumnFilters(column),
   );
 }
@@ -5180,6 +5397,11 @@ class $$CrisisQueueTableOrderingComposer
     column: $table.status,
     builder: (column) => ColumnOrderings(column),
   );
+
+  ColumnOrderings<int> get clockSkewSeconds => $composableBuilder(
+    column: $table.clockSkewSeconds,
+    builder: (column) => ColumnOrderings(column),
+  );
 }
 
 class $$CrisisQueueTableAnnotationComposer
@@ -5212,6 +5434,11 @@ class $$CrisisQueueTableAnnotationComposer
 
   GeneratedColumn<String> get status =>
       $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<int> get clockSkewSeconds => $composableBuilder(
+    column: $table.clockSkewSeconds,
+    builder: (column) => column,
+  );
 }
 
 class $$CrisisQueueTableTableManager
@@ -5251,6 +5478,7 @@ class $$CrisisQueueTableTableManager
                 Value<int> attempts = const Value.absent(),
                 Value<DateTime?> nextAttemptAt = const Value.absent(),
                 Value<String> status = const Value.absent(),
+                Value<int?> clockSkewSeconds = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => CrisisQueueCompanion(
                 clientId: clientId,
@@ -5259,6 +5487,7 @@ class $$CrisisQueueTableTableManager
                 attempts: attempts,
                 nextAttemptAt: nextAttemptAt,
                 status: status,
+                clockSkewSeconds: clockSkewSeconds,
                 rowid: rowid,
               ),
           createCompanionCallback:
@@ -5269,6 +5498,7 @@ class $$CrisisQueueTableTableManager
                 Value<int> attempts = const Value.absent(),
                 Value<DateTime?> nextAttemptAt = const Value.absent(),
                 Value<String> status = const Value.absent(),
+                Value<int?> clockSkewSeconds = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => CrisisQueueCompanion.insert(
                 clientId: clientId,
@@ -5277,6 +5507,7 @@ class $$CrisisQueueTableTableManager
                 attempts: attempts,
                 nextAttemptAt: nextAttemptAt,
                 status: status,
+                clockSkewSeconds: clockSkewSeconds,
                 rowid: rowid,
               ),
           withReferenceMapper: (p0) => p0

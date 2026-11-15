@@ -13,9 +13,9 @@ sealed class Result<T> {
   bool get isSuccess => this is Success<T>;
 
   T? get valueOrNull => switch (this) {
-        Success(value: final value) => value,
-        Failure() => null,
-      };
+    Success(value: final value) => value,
+    Failure() => null,
+  };
 }
 
 final class Success<T> extends Result<T> {
@@ -31,11 +31,7 @@ final class Failure<T> extends Result<T> {
 }
 
 class FailureDetail {
-  const FailureDetail({
-    required this.message,
-    this.code,
-    this.cause,
-  });
+  const FailureDetail({required this.message, this.code, this.cause});
 
   /// Contract `ErrorCode` from the generated client, or `null` when no
   /// envelope was ever received (network down, deserialisation failed,

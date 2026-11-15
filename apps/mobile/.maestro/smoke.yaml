@@ -1,0 +1,102 @@
+appId: com.Solace.Solace
+---
+# Demo build: no auth gate. Boots straight into the demo patient space.
+- launchApp:
+    clearState: true
+- extendedWaitUntil:
+    visible: "Your space"
+    timeout: 20000
+- assertVisible: "Demo space"
+# Title and description merge into one semantics node inside the focus card.
+- assertVisible: "(?s).*Today's focus.*"
+- assertVisible: "Check in"
+- extendedWaitUntil:
+    visible: "Your safety plan"
+    timeout: 8000
+- assertVisible: "Your safety plan"
+- assertVisible: "Grounding"
+
+# Check-in sheet: mood chips animate, Continue closes the sheet.
+- tapOn: "Check in"
+- extendedWaitUntil:
+    visible: "(?s).*How is today sitting with you.*"
+    timeout: 8000
+- tapOn: "Steady"
+- tapOn: "Continue"
+- extendedWaitUntil:
+    visible: "Your space"
+    timeout: 8000
+
+# Grounding: breathing orb runs, pause/start toggles, Done pops back.
+- tapOn: "Grounding"
+- extendedWaitUntil:
+    visible: "Box breathing"
+    timeout: 8000
+- assertVisible: "Pause"
+- tapOn: "Pause"
+- assertVisible: "Start"
+- tapOn: "Done"
+- extendedWaitUntil:
+    visible: "Your space"
+    timeout: 8000
+
+# Task: open, start, answer the check-in sheet, return home.
+- tapOn: "Start"
+- extendedWaitUntil:
+    visible: "Today's task"
+    timeout: 8000
+- tapOn: "I did it"
+- extendedWaitUntil:
+    visible: "Did this help?"
+    timeout: 8000
+- tapOn: "Yes, it helped"
+- back
+- extendedWaitUntil:
+    visible: "Your space"
+    timeout: 8000
+
+# Safety plan: reachable and saves. Save button is pinned to the bottom bar.
+- tapOn: "Your safety plan"
+- extendedWaitUntil:
+    visible: "What makes today harder"
+    timeout: 8000
+- tapOn: "Save"
+- extendedWaitUntil:
+    visible: "Your space"
+    timeout: 8000
+
+# Shell tabs (NavigationBar merges label + "Tab N of 4").
+- tapOn: "(?s).*Journal.*Tab 2 of 4.*"
+- assertVisible: "Recovery journal"
+- tapOn: "(?s).*History.*Tab 3 of 4.*"
+- assertVisible: "30-day mood"
+- tapOn: "(?s).*Settings.*Tab 4 of 4.*"
+- assertVisible: "(?s).*Demo patient.*"
+- scrollUntilVisible:
+    element:
+      text: "(?s).*Therapist demo.*"
+    direction: DOWN
+    timeout: 20000
+- assertVisible: "(?s).*Therapist demo.*"
+
+# Demo role switch: patient -> therapist -> patient detail -> alert -> back.
+- tapOn: "(?s).*Therapist demo.*"
+- extendedWaitUntil:
+    visible: "Patients"
+    timeout: 8000
+- assertVisible: "Needs Attention"
+- tapOn: "(?s).*Demo patient.*"
+- extendedWaitUntil:
+    visible: "Patient demo"
+    timeout: 8000
+- tapOn: "Open alert"
+- extendedWaitUntil:
+    visible: "Alert demo"
+    timeout: 8000
+- back
+- back
+- tapOn: "Switch to patient"
+- extendedWaitUntil:
+    visible: "Your space"
+    timeout: 8000
+- takeScreenshot: Solace_home_verified

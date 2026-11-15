@@ -12,6 +12,10 @@ const _defineUpdateManifestUrl = String.fromEnvironment('UPDATE_MANIFEST_URL');
 const _defineResourcesVerifiedAt = String.fromEnvironment(
   'RESOURCES_VERIFIED_AT',
 );
+const _defineDemoMode = String.fromEnvironment(
+  'DEMO_MODE',
+  defaultValue: 'true',
+);
 
 class Env {
   const Env({
@@ -20,6 +24,7 @@ class Env {
     required this.appVersion,
     this.updateManifestUrl,
     this.resourcesVerifiedAt,
+    this.demoMode = true,
   });
 
   static const apiBaseUrlKey = 'API_BASE_URL';
@@ -27,6 +32,7 @@ class Env {
   static const appVersionKey = 'APP_VERSION';
   static const updateManifestUrlKey = 'UPDATE_MANIFEST_URL';
   static const resourcesVerifiedAtKey = 'RESOURCES_VERIFIED_AT';
+  static const demoModeKey = 'DEMO_MODE';
 
   /// Backend base URL for the active environment.
   final String apiBaseUrl;
@@ -42,6 +48,10 @@ class Env {
 
   /// Verification date of the bundled crisis resources (`null` = not verified).
   final String? resourcesVerifiedAt;
+
+  /// Placeholder builds run a local demo account so no screen is auth-gated.
+  /// Disable with `--dart-define=DEMO_MODE=false`.
+  final bool demoMode;
 
   /// Debug-only startup blockers. Empty = valid environment.
   List<String> debugProblems() {
@@ -67,6 +77,7 @@ class Env {
     resourcesVerifiedAt: _defineResourcesVerifiedAt.isEmpty
         ? null
         : _defineResourcesVerifiedAt,
+    demoMode: _defineDemoMode != 'false',
   );
 
   /// Test seam: build from explicit values.
@@ -82,6 +93,7 @@ class Env {
       appVersion: read(appVersionKey) ?? '1.0.0',
       updateManifestUrl: read(updateManifestUrlKey),
       resourcesVerifiedAt: read(resourcesVerifiedAtKey),
+      demoMode: read(demoModeKey) != 'false',
     );
   }
 }

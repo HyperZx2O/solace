@@ -6,6 +6,8 @@ import 'package:drift/native.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+// ignore: unused_import
+import 'package:sqlcipher_flutter_libs/sqlcipher_flutter_libs.dart';
 
 part 'database.g.dart';
 
@@ -82,6 +84,7 @@ class CheckInQueue extends Table {
   IntColumn get attempts => integer().withDefault(const Constant(0))();
   DateTimeColumn get nextAttemptAt => dateTime().nullable()();
   TextColumn get status => text().withDefault(const Constant('pending'))();
+  IntColumn get clockSkewSeconds => integer().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {clientId};
@@ -94,6 +97,7 @@ class JournalQueue extends Table {
   IntColumn get attempts => integer().withDefault(const Constant(0))();
   DateTimeColumn get nextAttemptAt => dateTime().nullable()();
   TextColumn get status => text().withDefault(const Constant('pending'))();
+  IntColumn get clockSkewSeconds => integer().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {clientId};
@@ -106,38 +110,52 @@ class CrisisQueue extends Table {
   IntColumn get attempts => integer().withDefault(const Constant(0))();
   DateTimeColumn get nextAttemptAt => dateTime().nullable()();
   TextColumn get status => text().withDefault(const Constant('pending'))();
+  IntColumn get clockSkewSeconds => integer().nullable()();
 
   @override
   Set<Column<Object>> get primaryKey => {clientId};
 }
 
-@DriftDatabase(tables: [
-  SafetyPlanCache,
-  TodayTaskCache,
-  MoodHistoryCache,
-  EmergencyContacts,
-  CheckInQueue,
-  JournalQueue,
-  CrisisQueue,
-])
+@DriftDatabase(
+  tables: [
+    SafetyPlanCache,
+    TodayTaskCache,
+    MoodHistoryCache,
+    EmergencyContacts,
+    CheckInQueue,
+    JournalQueue,
+    CrisisQueue,
+  ],
+)
 class AppDatabase extends _$AppDatabase {
-  AppDatabase._(super.e);
+  AppDatabase._(super.e, {this.filePath});
+
+  final String? filePath;
 
   /// Test-only in-memory database. No encryption, no secure storage.
   AppDatabase.memory() : this._(NativeDatabase.memory());
 
+  /// Test-only: open an encrypted file with an explicit key.
+  AppDatabase.forFile(String path, String key)
+    : this._(
+        NativeDatabase(
+          File(path),
+          setup: (rawDb) => rawDb.execute("PRAGMA key = '$key'"),
+        ),
+        filePath: path,
+      );
+
   /// Opens (or creates) the encrypted database. The key is held in
-  /// flutter_secure_storage; a key is generated on first launch (Phase 7
-  /// hardens rotation and backup).
+  /// flutter_secure_storage; generated on first launch.
   static Future<AppDatabase> open() async {
     const storage = FlutterSecureStorage();
-    var key = await storage.read(key: 'between.db.key');
+    var key = await storage.read(key: 'Solace.db.key');
     if (key == null || key.isEmpty) {
       key = _randomKey();
-      await storage.write(key: 'between.db.key', value: key);
+      await storage.write(key: 'Solace.db.key', value: key);
     }
     final dir = await getApplicationDocumentsDirectory();
-    final file = p.join(dir.path, 'between.db');
+    final file = p.join(dir.path, 'Solace.db');
     return AppDatabase._(
       NativeDatabase(
         File(file),
@@ -145,11 +163,32 @@ class AppDatabase extends _$AppDatabase {
           rawDb.execute("PRAGMA key = '$key'");
         },
       ),
+      filePath: file,
     );
   }
 
+  /// Closes the database and deletes its file (logout). Bundled content remains.
+  Future<void> deleteFile() async {
+    await close();
+    if (filePath != null) {
+      final f = File(filePath!);
+      if (await f.exists()) await f.delete();
+    }
+  }
+
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
+
+  @override
+  MigrationStrategy get migration => MigrationStrategy(
+    onUpgrade: (m, from, to) async {
+      if (from < 2) {
+        await m.addColumn(checkInQueue, checkInQueue.clockSkewSeconds);
+        await m.addColumn(journalQueue, journalQueue.clockSkewSeconds);
+        await m.addColumn(crisisQueue, crisisQueue.clockSkewSeconds);
+      }
+    },
+  );
 }
 
 String _randomKey() {
