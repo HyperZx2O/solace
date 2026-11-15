@@ -1,0 +1,11 @@
+# Safety-critical paths: require review from team
+* @between/maintainers
+/apps/mobile/lib/core/security/ @between/maintainers
+/apps/mobile/lib/auth/ @between/maintainers
+/apps/mobile/lib/features/crisis/ @between/maintainers
+/apps/mobile/lib/features/therapist/alerts/ @between/maintainers
+/apps/mobile/lib/features/safety_plan/ @between/maintainers
+/apps/mobile/lib/sync/queue_worker.dart @between/maintainers
+/apps/mobile/lib/copy/ @between/maintainers
+/apps/mobile/android/app/src/main/AndroidManifest.xml @between/maintainers
+/apps/mobile/android/app/src/main/res/xml/network_security_config.xml @between/maintainers
