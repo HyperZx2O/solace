@@ -37,7 +37,7 @@
 
 ## 1. Vision and positioning
 
-A trauma recovery **companion** that helps people work on their healing **between therapy sessions**. It combines validated clinical surveys, a professionally sourced task library, AI-driven personalisation and a therapist supervision layer.
+A trauma recovery **companion** that helps people work on their healing **Solace therapy sessions**. It combines validated clinical surveys, a professionally sourced task library, AI-driven personalisation and a therapist supervision layer.
 
 > **Pitch:** *"Your therapist works with you once a week. We work with you every day."*
 
@@ -1036,7 +1036,7 @@ Do not reopen without a strong reason.
 | **27** | Does the feature set need external regulatory review? Which Bangladesh digital-health rules apply? Which features are at risk if classification changes? | Mentor |
 | **28** | Does the "platform owns the safety net" model (Option C) adequately limit therapist negligence exposure? | Mentor |
 
-### 22.2 Conflicts between source documents (need a team decision)
+### 22.2 Conflicts Solace source documents (need a team decision)
 
 | # | Conflict | What this spec assumed |
 |---|---|---|

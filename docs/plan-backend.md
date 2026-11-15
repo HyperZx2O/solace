@@ -1,9 +1,9 @@
-# Implementation Plan for "Between: Backend API"
+# Implementation Plan for "Solace: Backend API"
 
 > **How to use this file**
-> This is the backend plan for Between, a trauma-recovery companion app. It belongs to Person A (backend). A coding agent must read this file, and `plan-frontend.md`, before writing any code, and re-read the current phase before starting it. Where this plan says "PROPOSED", the decision is not final until the owner records it as Accepted in the ADR table.
+> This is the backend plan for Solace, a trauma-recovery companion app. It belongs to Person A (backend). A coding agent must read this file, and `plan-frontend.md`, before writing any code, and re-read the current phase before starting it. Where this plan says "PROPOSED", the decision is not final until the owner records it as Accepted in the ADR table.
 >
-> Companion documents live in the repo: the consolidated spec (`docs/spec/between-spec.md`) and the issues log (`docs/spec/issues-and-solutions.md`). If this plan and the spec disagree, the spec wins until an Open Decision below resolves the conflict and the spec is updated.
+> Companion documents live in the repo: the consolidated spec (`docs/spec/Solace-spec.md`) and the issues log (`docs/spec/issues-and-solutions.md`). If this plan and the spec disagree, the spec wins until an Open Decision below resolves the conflict and the spec is updated.
 
 ---
 
@@ -11,14 +11,14 @@
 
 | Field | Value |
 |---|---|
-| Project Name | Between: Backend API (`services/api`) |
+| Project Name | Solace: Backend API (`services/api`) |
 | Project Type | Backend Service |
 | Primary Language(s) | TypeScript on Node.js 22 LTS |
 | Framework(s) | NestJS (modular monolith), Prisma ORM, BullMQ for scheduled and delayed jobs |
 | Target Platform | Linux container. Clients are the Android app (MVP), then iOS and desktop (later) |
 | Deployment Target | **Not yet decided.** The spec names AWS (ECS, RDS, ElastiCache, S3, CloudWatch). See Open Decision OD-8 |
 | Team / Owner | Person A, backend owner: [Name] |
-| Status | Planning |
+| Status | CP1 implemented and tested. CP2–CP5 modules scaffolded/partial; not signed off by their test suites. |
 
 ### What this service does, in one paragraph
 
@@ -91,7 +91,7 @@ These rules apply to every phase and every coding agent working on this service.
 | OD-10 | Does a PHQ-9 item 9 (self-harm) answer create a therapist alert? | Spec only shows an in-app overlay | Record it and show it to the therapist as a **"possible concern"** flag, not a Tier 3 alert. Needs clinical confirmation | Survey scoring, CP1 |
 | OD-11 | Can one person be both patient and therapist? | Spec does not say | **Two separate accounts**, two logins. Not in MVP | Accounts, CP1 |
 | OD-12 | Does the Tier 3 deterministic detector run without the AI? | Spec says Tier 3 is "rule-based" (B09) but also sub-2s AI detection | **Yes.** Rule-based Tier 3 runs first and independently. AI adds Tier 1 and 2 signals only | Crisis pipeline, CP2. Needs mentor confirmation of B09 |
-| OD-13 | Is the notification to organisations neutral? | Spec says neutral for trusted contact, unspecified for organisations | Organisation SMS contains only: "[Between] A user needs support. Callback: [number]". No clinical detail. Needs legal review | Escalation SMS, CP2 |
+| OD-13 | Is the notification to organisations neutral? | Spec says neutral for trusted contact, unspecified for organisations | Organisation SMS contains only: "[Solace] A user needs support. Callback: [number]". No clinical detail. Needs legal review | Escalation SMS, CP2 |
 
 ### Architecture Decision Records (ADR)
 

@@ -15,7 +15,7 @@
 | FD-9 | Therapist data on device | Memory only; nothing about patients persisted | Spec 12.4 + plan; enforced by schema test + logout integration test | Phase 4/7 | Data a stolen therapist phone leaks = worst-case scenario of the app |
 | FD-10 | Role source | `GET /v1/me` only; never a UI choice; guard-tested both directions | Contract confirms path exists | Phase 4 | bypassable role = safety violation |
 
-Package-name note (ADR-F10): current skeleton is `com.between.between`. Plan wanted `com.between` only if owner confirms. Either works; record the chosen one in the ADR.
+Package-name note (ADR-F10): current skeleton is `com.Solace.Solace`. Plan wanted `com.Solace` only if owner confirms. Either works; record the chosen one in the ADR.
 
 ## Related spec conflicts (Section 22.2) — frontend impact
 

@@ -1,6 +1,6 @@
-﻿# Design System — Between
+# Design System — Solace
 
-The single source of truth for Between's visual language. This document is written to be
+The single source of truth for Solace's visual language. This document is written to be
 **read on its own**, without the source code, and to be handed to an implementation agent
 (Claude, a designer, a new developer) as the brief for building the app.
 
@@ -21,7 +21,7 @@ Flutter app, `packages/design-tokens` is the shared token source.
 
 > **The dark fluid is the stage. The botanical system is the texture and the voice.**
 
-Between is a trauma-recovery companion app. The days between therapy appointments are the
+Solace is a trauma-recovery companion app. The days between therapy appointments are the
 hard part, and the app exists to hold those days. The site is a single dark, immersive,
 full-bleed surface. A GPU ink simulation lives behind everything, a radial scrim darkens the
 middle so text stays legible, and a faint garden grid sits over the ink. Content is set on a
@@ -66,7 +66,7 @@ There is no light mode. The palette is dark-only by decision, not by omission.
 
 ### 2.2 Botanical accents (carried from the original system)
 
-These come from Between's first, warm, paper-based design language. They were translated, not
+These come from Solace's first, warm, paper-based design language. They were translated, not
 pasted, and they now serve as the system's texture and structural colour.
 
 | Token | Value | Use |
@@ -213,7 +213,7 @@ One page. One hero, seven bands, one closing statement.
 | Order | Section | Anchor | Layout |
 | --- | --- | --- | --- |
 | 1 | Hero | | Nav, centred column (headline, sub-line, waitlist bar), footer line. `100lvh` |
-| 2 | A day with Between | `#how-it-works` | Section head, then the three-step stepper |
+| 2 | A day with Solace | `#how-it-works` | Section head, then the three-step stepper |
 | 3 | What this is / what this is not | | Split: prose on the left, struck-through list on the right |
 | 4 | Safety and privacy | | Section head, then three interactive tiles |
 | 5 | The app is coming | `#download` | 12-column band: statement and lead on the left, release panel on the right |
@@ -233,7 +233,7 @@ One page. One hero, seven bands, one closing statement.
 - **Waitlist bar**: a glass pill containing an email input and a solid white "Join Waitlist"
   button. Submitting swaps the bar for a quiet confirmation pill. No backend: the address is
   written to local storage.
-- **Footer line**: a single centred line, "© 2026 Between — engineered for deep work."
+- **Footer line**: a single centred line, "© 2026 Solace — engineered for deep work."
 
 ### 6.2 The stepper (interactive)
 
@@ -280,7 +280,7 @@ The most important band on the page and the least decorative.
 ## 7. The companion creature
 
 `apps/landing/components/hero-companion.tsx`. A hand-drawn SVG, `viewBox="0 0 260 190"`, originally the
-mascot of Between's first design. It is redrawn in the dark palette and it behaves like a
+mascot of Solace's first design. It is redrawn in the dark palette and it behaves like a
 small animal. It is the emotional anchor of the page.
 
 ### 7.1 Anatomy
@@ -315,7 +315,7 @@ are sage at 55% and 34% alpha.
 immediately and restarts the idle timer.
 
 **It is a real control.** The creature is a button with an accessible name ("Say hello to the
-Between companion"), a visible focus ring, and a 44px hit target. The touch target uses
+Solace companion"), a visible focus ring, and a 44px hit target. The touch target uses
 `touch-action: manipulation` so a tap does not wait for the scroll gesture.
 
 ### 7.4 Placement
@@ -415,8 +415,8 @@ and it appears instantly.
 
 | Key | Value | Purpose |
 | --- | --- | --- |
-| `between.language` | `"en"` or `"bn"` | Language preference |
-| `between.waitlist` | JSON array of email strings | Waitlist sign-ups |
+| `Solace.language` | `"en"` or `"bn"` | Language preference |
+| `Solace.waitlist` | JSON array of email strings | Waitlist sign-ups |
 
 Both are read and written defensively. The page works when storage is blocked.
 
