@@ -1,8 +1,8 @@
-﻿<p align="center">
-  <img src="docs/preview.jpg" alt="Between landing page" width="100%" />
+<p align="center">
+  <img src="docs/preview.jpg" alt="Solace landing page" width="100%" />
 </p>
 
-<h1 align="center">Between</h1>
+<h1 align="center">Solace</h1>
 
 <p align="center">
   <em>Your therapist works with you once a week. We work with you every day.</em>
@@ -27,7 +27,7 @@
 ## Preview
 
 <p align="center">
-  <img src="docs/preview-mobile.jpg" alt="Between on mobile" width="300" />
+  <img src="docs/preview-mobile.jpg" alt="Solace on mobile" width="300" />
 </p>
 
 The landing page is one immersive dark hero. A full-bleed WebGL fluid simulation (ink in water)
@@ -38,20 +38,20 @@ set on a full-width typographic grid, with no cards and no boxes.
 
 ## What it is
 
-**Between** is a trauma-recovery companion app, and a public landing site for it.
+**Solace** is a trauma-recovery companion app, and a public landing site for it.
 
 This repository is a monorepo. `apps/landing` holds the marketing site, a single page that
-explains what Between is, keeps the safety promises easy to check, puts the crisis line one tap
+explains what Solace is, keeps the safety promises easy to check, puts the crisis line one tap
 away and collects waitlist sign-ups. `apps/mobile` holds the Flutter app, Android first.
 `packages/design-tokens` holds the shared palette, type scale, spacing and motion values.
 
-> **Between is a companion, not a replacement for your therapist.**
+> **Solace is a companion, not a replacement for your therapist.**
 > It is not a treatment, not a diagnosis, not a replacement for a therapist, and not a crisis
 > service. The crisis numbers on this page are for real and always available.
 
 ### Design thesis
 
-The page is a translation of Between's original botanical design language into a dark, fluid
+The page is a translation of Solace's original botanical design language into a dark, fluid
 system:
 
 | Original (light, botanical) | Current (dark, fluid) |
@@ -86,7 +86,7 @@ texture and the voice.
 - Full English and বাংলা. A globe icon switches language, and the `lang` attribute, the font
   stack and the type scale all follow.
 - A full-width 12-column content grid below the fold: label column, content column, hairline
-  between.
+  Solace.
 - A typographic crisis band that sets the Kaan Pete Roi number as display type, with *Call Kaan*
   and *Call 999* as tap targets.
 - A rem-based layout that scales proportionally from 320px to 1920px.
@@ -268,6 +268,6 @@ of the source has no licence yet. Add a `LICENSE` file before publishing publicl
 ---
 
 <p align="center">
-  <sub>© 2026 Between. Engineered for deep work. Not a clinical service, not a treatment, and
+  <sub>© 2026 Solace. Engineered for deep work. Not a clinical service, not a treatment, and
   not a crisis line.</sub>
 </p>
