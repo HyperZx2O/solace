@@ -1,6 +1,6 @@
 # Requirements
 
-Derived from `docs/plan-backend.md`. The consolidated spec (`docs/spec/between-spec.md`)
+Derived from `docs/plan-backend.md`. The consolidated spec (`docs/spec/Solace-spec.md`)
 referenced by the plan is **not in this repository**, so every requirement below is tagged
 `[ASSUMPTION]` until it can be checked against the spec. IDs are stable and tests reference
 them by name.

@@ -1,16 +1,17 @@
-# Between API
+# Solace API
 
-Backend for Between, a trauma-recovery companion app. The API owns every clinical
+Backend for Solace, a trauma-recovery companion app. The API owns every clinical
 and safety decision: crisis detection, alert state, therapist access, consent and
 privacy operations. The Flutter client is untrusted and never decides a tier or a
 state.
 
-Current status: **CP1 implemented** (after Wave A / Phase 0–2). The service boots,
-validates its configuration, and exposes the CP1 surface: auth and sessions, consent
-with append-only history and two-step withdrawal, PHQ-9 surveys with server-side
-scoring, the encrypted safety plan, devices and notification preferences. Crisis
-detection, therapist connections, journals, tasks and escalation timers are still
-contract-only and `[PLANNED]`.
+Current status: **CP1 implemented and tested** (auth and sessions, consent with
+append-only history and two-step withdrawal, PHQ-9 surveys with server-side scoring,
+the encrypted safety plan, devices and notification preferences). Modules for
+CP2–CP5 (crisis, therapist connections, tasks, journals, sync, privacy, restriction,
+stage) exist in the tree and many are wired to controllers, but they are **scaffolded
+or partial** and are not yet covered by the CP2–CP5 test suites. Treat those surfaces
+as in-progress, not shipped.
 
 ## Requirements
 
@@ -43,7 +44,7 @@ Both return the standard envelope. `/ready` returns 503 when PostgreSQL or Redis
 is unreachable.
 
 The seed creates two synthetic accounts, both with the development-only password
-`between-dev-password-not-real`:
+`Solace-dev-password-not-real`:
 
 - `patient@example.invalid` — patient with the standard PHQ-9, one completed result,
   six consent records and `journalPrivacy=full_access` so it can exercise withdrawal.
@@ -76,7 +77,7 @@ Safety values are locked in production: `FRESHNESS_WINDOW_HOURS=2`,
 
 Two database URLs are used on purpose:
 
-- `DATABASE_URL` — restricted runtime role `between_app`.
+- `DATABASE_URL` — restricted runtime role `Solace_app`.
 - `MIGRATION_DATABASE_URL` — owner role, migrations and seed only.
 
 This is a documented deviation from the plan's config table: without it the
@@ -124,6 +125,6 @@ openapi.yaml         the client contract (v0.1 candidate)
 - `docs/adr/` — ADR-001 … ADR-010
 - `docs/runbooks/` — crisis escalation, database recovery, secret rotation
 
-`docs/spec/between-spec.md` and `plan-frontend.md` are referenced by the build
+`docs/spec/Solace-spec.md` and `plan-frontend.md` are referenced by the build
 plan but are not in this repository. Requirements derived from the plan alone are
 tagged `[ASSUMPTION]` in `docs/requirements.md`.

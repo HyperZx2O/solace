@@ -1,9 +1,9 @@
 openapi: 3.1.0
 info:
-  title: Between API
+  title: Solace API
   version: 0.1.0
   description: |
-    Backend for Between, a trauma-recovery companion app.
+    Backend for Solace, a trauma-recovery companion app.
 
     Every response uses one envelope. Every timestamp is UTC ISO-8601. Every
     device-originated create carries a `clientId`; resubmitting the same
@@ -15,7 +15,7 @@ info:
 
     Status: v0.1 candidate. Requires Person B review before the `contract-v0.1` tag.
   contact:
-    name: Between backend owner
+    name: Solace backend owner
 servers:
   - url: http://localhost:3000
     description: Local development

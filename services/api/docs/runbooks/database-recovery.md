@@ -17,8 +17,8 @@ restore Redis.
 2. Restore the most recent base backup, then replay WAL to the chosen
    point in time. Choose the latest point that is before the bad event.
 3. Create the roles and grants, in this order:
-   - `between` (owner) with the password from the secret manager;
-   - `between_app` with `NOSUPERUSER NOCREATEDB NOCREATEROLE`.
+   - `Solace` (owner) with the password from the secret manager;
+   - `Solace_app` with `NOSUPERUSER NOCREATEDB NOCREATEROLE`.
 4. Apply migrations as the owner: `MIGRATION_DATABASE_URL=... npm run db:deploy`.
 5. Re-apply the append-only grants if the base backup predates that migration
    (the migration itself does this; verify with the queries below).
@@ -31,7 +31,7 @@ restore Redis.
 ```sql
 SELECT grantee, table_name, privilege_type
 FROM information_schema.role_table_grants
-WHERE grantee = 'between_app'
+WHERE grantee = 'Solace_app'
   AND table_name IN ('consent_records','alert_events','access_log',
                      'crisis_events','safety_team_flags')
 ORDER BY table_name, privilege_type;

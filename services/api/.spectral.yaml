@@ -6,7 +6,7 @@ rules:
   operation-operationId: error
   operation-operationId-unique: error
   operation-tags: error
-  # Summary is required (see between-operation-summary); a full prose
+  # Summary is required (see Solace-operation-summary); a full prose
   # description is encouraged but not a gate.
   operation-description: off
 
@@ -17,8 +17,8 @@ rules:
   no-eval-in-markdown: error
   no-script-tags-in-markdown: error
 
-  # Between-specific: every path starts with /v1 except health probes.
-  between-paths-versioned:
+  # Solace-specific: every path starts with /v1 except health probes.
+  Solace-paths-versioned:
     description: All business endpoints live under /v1. Health probes do not.
     given: $.paths[*]~
     severity: error
@@ -28,7 +28,7 @@ rules:
         match: '^(/health|/ready|/v1/.+)$'
 
   # Every operation carries an explicit summary for the generated reference.
-  between-operation-summary:
+  Solace-operation-summary:
     description: Every operation needs a summary.
     given: $.paths[*][get,put,post,delete,patch]
     severity: error
@@ -38,7 +38,7 @@ rules:
 
   # Sensitive free-text fields must declare a bound, so a client cannot send
   # unbounded content into an encrypted column.
-  between-bounded-text:
+  Solace-bounded-text:
     description: Journal and safety-plan text fields must have a maxLength.
     given: $..properties[text,field1,field2,field3,field4,field5]
     severity: error

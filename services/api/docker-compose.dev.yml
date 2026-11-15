@@ -3,30 +3,30 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: between-postgres
+    container_name: Solace-postgres
     environment:
-      POSTGRES_USER: between
-      POSTGRES_PASSWORD: between
-      POSTGRES_DB: between
+      POSTGRES_USER: Solace
+      POSTGRES_PASSWORD: Solace
+      POSTGRES_DB: Solace
     ports:
       - '5432:5432'
     volumes:
-      - between-pgdata:/var/lib/postgresql/data
+      - Solace-pgdata:/var/lib/postgresql/data
       - ./scripts/init-dev-db.sql:/docker-entrypoint-initdb.d/10-init-dev-db.sql:ro
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U between -d between']
+      test: ['CMD-SHELL', 'pg_isready -U Solace -d Solace']
       interval: 5s
       timeout: 5s
       retries: 10
 
   redis:
     image: redis:7-alpine
-    container_name: between-redis
+    container_name: Solace-redis
     command: ['redis-server', '--appendonly', 'yes', '--appendfsync', 'everysec']
     ports:
       - '6379:6379'
     volumes:
-      - between-redisdata:/data
+      - Solace-redisdata:/data
     healthcheck:
       test: ['CMD', 'redis-cli', 'ping']
       interval: 5s
@@ -34,5 +34,5 @@ services:
       retries: 10
 
 volumes:
-  between-pgdata:
-  between-redisdata:
+  Solace-pgdata:
+  Solace-redisdata:

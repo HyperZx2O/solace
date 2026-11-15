@@ -8,21 +8,21 @@ migration under `prisma/migrations/`.
 
 | Role          | Used by                             | Privileges                                                      |
 | ------------- | ----------------------------------- | --------------------------------------------------------------- |
-| `between`     | migrations, seed, break-glass admin | owner of every table                                            |
-| `between_app` | the running API (`DATABASE_URL`)    | `SELECT, INSERT, UPDATE, DELETE`, minus the append-only revokes |
+| `Solace`     | migrations, seed, break-glass admin | owner of every table                                            |
+| `Solace_app` | the running API (`DATABASE_URL`)    | `SELECT, INSERT, UPDATE, DELETE`, minus the append-only revokes |
 
 The runtime never connects as the owner. That is what makes the append-only
 guarantee real: even a compromised service process cannot rewrite consent or
 audit history. `MIGRATION_DATABASE_URL` exists so `prisma migrate` can run as the
 owner while `DATABASE_URL` stays restricted.
 
-Migrations run as `between` because `ALTER TABLE ... GRANT/REVOKE` requires
+Migrations run as `Solace` because `ALTER TABLE ... GRANT/REVOKE` requires
 ownership. Never point `DATABASE_URL` at the owner role.
 
 ## Append-only tables
 
 Enforced in `20261024151456_append_only_grants` by revoking `UPDATE`, `DELETE`
-and `TRUNCATE` from `between_app`:
+and `TRUNCATE` from `Solace_app`:
 
 - `consent_records`
 - `alert_events`
@@ -32,7 +32,7 @@ and `TRUNCATE` from `between_app`:
 - `ai_scans` (metadata only, no journal text)
 
 `test/integration/append-only.spec.ts` proves this by attempting the operations
-as `between_app` and expecting SQLSTATE `42501`. If you add a table that stores
+as `Solace_app` and expecting SQLSTATE `42501`. If you add a table that stores
 history, revoke the same privileges in its migration and add it to that test.
 
 `update`, `delete` and `truncate` on these tables still work for the owner role.

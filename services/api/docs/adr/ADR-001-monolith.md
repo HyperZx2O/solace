@@ -6,7 +6,7 @@
 
 ## Context
 
-Between needs auth, consent, surveys, crisis detection, escalation timers,
+Solace needs auth, consent, surveys, crisis detection, escalation timers,
 therapist views, journals, sync and privacy operations. The MVP has one Android
 client and a small team. Latency on the crisis path is a safety property, not an
 optimisation.

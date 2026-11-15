@@ -1,7 +1,7 @@
 {
-  "name": "@between/api",
+  "name": "@solace/api",
   "version": "0.1.0",
-  "description": "Between backend API. Owns clinical and safety decisions for the Between companion app.",
+  "description": "Solace backend API. Owns clinical and safety decisions for the Solace companion app.",
   "private": true,
   "license": "UNLICENSED",
   "engines": {
