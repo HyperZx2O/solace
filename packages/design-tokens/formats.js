@@ -18,7 +18,7 @@ function toArgbHex(value) {
 }
 
 const cssFlat = {
-  name: 'between/css-flat',
+  name: 'solace/css-flat',
   format: () => {
     const lines = KEYS.map((k) => {
       const t = TOKENS[k];
@@ -33,7 +33,7 @@ const cssFlat = {
 };
 
 const dart = {
-  name: 'between/dart',
+  name: 'solace/dart',
   format: () => {
     const parts = [];
     parts.push('// GENERATED from packages/design-tokens/tokens.json — do not edit.');

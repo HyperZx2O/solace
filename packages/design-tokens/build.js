@@ -1,4 +1,4 @@
-// Build script for the Between design tokens.
+// Build script for the Solace design tokens.
 // Run: npm run build  (inside packages/design-tokens)
 // Outputs:
 //   dist/tokens.css                            — flat CSS custom properties (drop-in for flowstate.css :root)
@@ -13,11 +13,11 @@ async function build() {
         platforms: {
           css: {
             buildPath: 'dist/',
-            files: [{ destination: 'tokens.css', format: 'between/css-flat' }],
+            files: [{ destination: 'tokens.css', format: 'solace/css-flat' }],
           },
           dart: {
             buildPath: '../../apps/mobile/lib/design/',
-            files: [{ destination: 'tokens.g.dart', format: 'between/dart' }],
+            files: [{ destination: 'tokens.g.dart', format: 'solace/dart' }],
           },
         },
       })

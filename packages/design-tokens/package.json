@@ -1,8 +1,8 @@
 {
-  "name": "@between/design-tokens",
+  "name": "@solace/design-tokens",
   "version": "1.0.0",
   "private": true,
-  "description": "Shared design tokens for Between (landing + Flutter app). Source: apps/landing/app/flowstate.css :root.",
+  "description": "Shared design tokens for Solace (landing + Flutter app). Source: apps/landing/app/flowstate.css :root.",
   "scripts": {
     "build": "node build.js"
   },
