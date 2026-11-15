@@ -1,4 +1,4 @@
-# Regenerates the between API client from the frozen contract.
+# Regenerates the Solace API client from the frozen contract.
 #
 # Pin discipline:
 #   - generator wrapper: @openapitools/openapi-generator-cli 2.13.0 (npm)
@@ -6,7 +6,7 @@
 #   - contract:          services/api/openapi.yaml — its SHA-256 is written to CONTRACT.lock
 #
 # Output: packages/api-client (standalone dart-dio package) — committed, never hand-edited.
-# apps/mobile depends on it via `between_api: { path: ../api-client }`.
+# apps/mobile depends on it via `Solace_api: { path: ../api-client }`.
 # CI (Phase 13) re-runs this script and fails on any diff.
 param(
     [string]$RepoRoot = (Join-Path $PSScriptRoot '..\..')
@@ -41,7 +41,7 @@ if (-not $FlutterRoot) {
     else { throw "Dart binary not found under $FlutterRoot\bin" }
 }
 $Contract = (Resolve-Path (Join-Path $RepoRoot 'services\api\openapi.yaml')).Path -replace '\\','/'
-# dart-dio output is a standalone package (imports package:between_api/...),
+# dart-dio output is a standalone package (imports package:Solace_api/...),
 # so it lives outside the app and is referenced as a path dependency.
 $OutDir = Join-Path $RepoRoot 'packages\api-client'
 $LockFile = Join-Path $OutDir 'CONTRACT.lock'
@@ -92,7 +92,7 @@ generated_at: $((Get-Date).ToUniversalTime().ToString('o'))
     --input-spec $Contract `
     --generator-name dart-dio `
     --output $OutDir `
-    --additional-properties=pubName=between_api,pubVersion=0.1.0,pubLibrary=between_api,dateLibrary=core,legacyDiscriminatorBehavior=false,useEnumsForNumericMapKeys=false,separatorLegacyBehavior=false
+    --additional-properties=pubName=Solace_api,pubVersion=0.1.0,pubLibrary=Solace_api,dateLibrary=core,legacyDiscriminatorBehavior=false,useEnumsForNumericMapKeys=false,separatorLegacyBehavior=false
 
 if ($LASTEXITCODE -ne 0) {
     throw "openapi-generator failed with exit code $LASTEXITCODE"
