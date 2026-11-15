@@ -11,8 +11,7 @@ void main() {
   final contract = File('../../services/api/openapi.yaml');
   final generatedRoot = Directory('../../packages/api-client/lib/src/model');
 
-  Map readYaml(String path) =>
-      loadYaml(File(path).readAsStringSync()) as Map;
+  Map readYaml(String path) => loadYaml(File(path).readAsStringSync()) as Map;
 
   test('contract and generated enum files exist', () {
     expect(contract.existsSync(), isTrue);
@@ -36,12 +35,18 @@ void main() {
     test('${entry.key} values all present in generated client', () {
       final values = (schemas[entry.key]['enum'] as YamlList).cast<String>();
       final file = File('${generatedRoot.path}/${entry.value}');
-      expect(file.existsSync(), isTrue,
-          reason: 'missing generated file for ${entry.key}');
+      expect(
+        file.existsSync(),
+        isTrue,
+        reason: 'missing generated file for ${entry.key}',
+      );
       final source = file.readAsStringSync();
       for (final v in values) {
-        expect(source, contains("wireName: r'$v'"),
-            reason: 'contract value "$v" missing from ${entry.value}');
+        expect(
+          source,
+          contains("wireName: r'$v'"),
+          reason: 'contract value "$v" missing from ${entry.value}',
+        );
       }
     });
   }
@@ -54,8 +59,11 @@ void main() {
     expect(file.existsSync(), isTrue);
     final source = file.readAsStringSync();
     for (final v in values) {
-      expect(source, contains("wireName: r'$v'"),
-          reason: 'contract value "$v" missing from therapist_profile.dart');
+      expect(
+        source,
+        contains("wireName: r'$v'"),
+        reason: 'contract value "$v" missing from therapist_profile.dart',
+      );
     }
   });
 
@@ -65,8 +73,11 @@ void main() {
     expect(file.existsSync(), isTrue);
     final source = file.readAsStringSync();
     for (final v in values) {
-      expect(source, contains("wireName: r'$v'"),
-          reason: 'contract error code "$v" missing');
+      expect(
+        source,
+        contains("wireName: r'$v'"),
+        reason: 'contract error code "$v" missing',
+      );
     }
     expect(values.length, 12, reason: 'contract declares 12 error codes');
   });

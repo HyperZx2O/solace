@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:between/app/smoke_screen.dart';
-import 'package:between/config/env.dart';
-import 'package:between/l10n/app_localizations.dart';
+import 'package:solace/app/smoke_screen.dart';
+import 'package:solace/config/env.dart';
+import 'package:solace/l10n/app_localizations.dart';
 
 void main() {
   Widget smoke({Locale? locale}) {
@@ -23,13 +23,13 @@ void main() {
 
   testWidgets('English smoke route renders the ARB headline', (tester) async {
     await tester.pumpWidget(smoke(locale: const Locale('en')));
-    expect(find.text('Between'), findsOneWidget);
+    expect(find.text('Solace'), findsOneWidget);
     expect(find.textContaining('even when things feel heavy'), findsOneWidget);
   });
 
   testWidgets('Bengali smoke route renders the bn strings', (tester) async {
     await tester.pumpWidget(smoke(locale: const Locale('bn')));
-    expect(find.text('Between'), findsOneWidget);
+    expect(find.text('Solace'), findsOneWidget);
     expect(find.textContaining('অ্যাপটি আপনি খুলতে পারবেন'), findsOneWidget);
   });
 
@@ -42,7 +42,7 @@ void main() {
         child: smoke(locale: const Locale('en')),
       ),
     );
-    final title = tester.getRect(find.text('Between'));
+    final title = tester.getRect(find.text('Solace'));
     expect(title.left, greaterThanOrEqualTo(0));
     expect(title.width, lessThan(600));
   });

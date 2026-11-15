@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:between/config/env.dart';
+import 'package:solace/config/env.dart';
 
 void main() {
   test('valid values produce no debug problems', () {

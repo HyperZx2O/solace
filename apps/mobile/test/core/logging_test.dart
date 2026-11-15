@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:between/core/logging.dart';
+import 'package:solace/core/logging.dart';
 
 void main() {
   test('journal text is redacted', () {

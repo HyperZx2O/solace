@@ -1,4 +1,4 @@
-import 'package:between/core/result.dart';
+import 'package:solace/core/result.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -18,9 +18,9 @@ void main() {
 
   test('sealed hierarchy can be switched exhaustively', () {
     String label(Result<bool> r) => switch (r) {
-          Success(value: final v) => 'ok:$v',
-          Failure(detail: final d) => 'bad:${d.code ?? 'offline'}',
-        };
+      Success(value: final v) => 'ok:$v',
+      Failure(detail: final d) => 'bad:${d.code ?? 'offline'}',
+    };
     expect(label(const Success(true)), 'ok:true');
     expect(
       label(const Failure(FailureDetail(message: 'x', cause: 'suppressed'))),
@@ -30,7 +30,11 @@ void main() {
 
   test('FailureDetail toString never renders the cause', () {
     const fakeCode = _TestCode.rateLimited;
-    final d = FailureDetail(code: fakeCode, message: 'slow down', cause: StateError('secret'));
+    final d = FailureDetail(
+      code: fakeCode,
+      message: 'slow down',
+      cause: StateError('secret'),
+    );
     expect(d.toString(), isNot(contains('secret')));
     expect(d.toString(), contains('rateLimited'));
   });

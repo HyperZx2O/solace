@@ -1,4 +1,4 @@
-import 'package:between/data/local/database.dart';
+import 'package:solace/data/local/database.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 /// FD-9: therapist patient data is never stored on the device. This test
@@ -15,19 +15,25 @@ void main() {
       'patient_summary',
       'therapist_patient',
     ]) {
-      expect(names, isNot(contains(forbidden)),
-          reason: 'FD-9 violation: table "$forbidden" must not exist');
+      expect(
+        names,
+        isNot(contains(forbidden)),
+        reason: 'FD-9 violation: table "$forbidden" must not exist',
+      );
     }
     // Positive: the seven planned tables are present.
-    expect(names, containsAll(const [
-      'safety_plan_cache',
-      'today_task_cache',
-      'mood_history_cache',
-      'emergency_contacts',
-      'check_in_queue',
-      'journal_queue',
-      'crisis_queue',
-    ]));
+    expect(
+      names,
+      containsAll(const [
+        'safety_plan_cache',
+        'today_task_cache',
+        'mood_history_cache',
+        'emergency_contacts',
+        'check_in_queue',
+        'journal_queue',
+        'crisis_queue',
+      ]),
+    );
     db.close();
   });
 
