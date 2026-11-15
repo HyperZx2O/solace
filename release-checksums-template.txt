@@ -1,0 +1,7 @@
+# Release checksums (template — filled after signed build)
+
+```
+# sha256sum target/app-release-*.apk > release-checksums.txt
+```
+
+Replace `.apk` above with the signed `.bin` output from the CI build.
