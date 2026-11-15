@@ -32,7 +32,7 @@ const WAVE_MS = 1500;
 const PET_MS = 1600;
 
 /**
- * The original Between creature, re-skinned for the dark hero.
+ * The original Solace creature, re-skinned for the dark hero.
  *
  * It is a real control: a button you can press. It blinks on its own, leans
  * toward the pointer, waves when the page scrolls, lifts a leaf when you press
@@ -167,7 +167,7 @@ export function HeroCompanion({ state = "rest" }: { state?: CompanionState }) {
       type="button"
       className="fs-companion-btn"
       onClick={pet}
-      aria-label={t("Say hello to the Between companion", "Between-এর সঙ্গীকে সম্বোধন জানান")}
+      aria-label={t("Say hello to the Solace companion", "Solace-এর সঙ্গীকে সম্বোধন জানান")}
     >
       <span className={classes}>
         <svg viewBox="0 0 260 190" role="presentation">

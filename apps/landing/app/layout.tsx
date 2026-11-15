@@ -27,7 +27,7 @@ const bengali = Noto_Sans_Bengali({
 });
 
 export const metadata: Metadata = {
-  title: "Between",
+  title: "Solace",
   description: "Your therapist works with you once a week. We work with you every day.",
 };
 

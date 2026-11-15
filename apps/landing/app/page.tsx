@@ -6,7 +6,7 @@ import { HeroCompanion, type CompanionState } from "@/components/hero-companion"
 import { LanguageSwitch, useI18n } from "@/lib/i18n";
 import { SmoothScroll } from "@/components/smooth-scroll";
 
-const WAITLIST_KEY = "between.waitlist";
+const WAITLIST_KEY = "Solace.waitlist";
 
 export default function LandingPage() {
   const { t } = useI18n();
@@ -60,10 +60,10 @@ export default function LandingPage() {
     };
   }, []);
 
-  const heading = t("Every day between sessions.", "সেশনের মাঝের প্রতিদিন।");
+  const heading = t("Solace", "Solace");
   const sub = t(
-    "The hour in the room is real. The other days are where sleep, work, and memory actually happen.",
-    "ঘণ্টাটা রুমে সত্যি। বাকি দিনগুলোতেই ঘুম, কাজ, আর স্মৃতি আসলে ঘটে।",
+    "For the days that matter.",
+    "গুরুত্বপূর্ণ দিনগুলোর জন্য",
   );
 
   const steps = [
@@ -169,7 +169,7 @@ export default function LandingPage() {
                 <path d="M2.5 9c2.5 0 2.5 4.2 5 4.2S10 9 12 9s2.5 4.2 5 4.2S19.5 9 21.5 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
                 <path d="M2.5 15c2.5 0 2.5 4.2 5 4.2S10 15 12 15s2.5 4.2 5 4.2S19.5 15 21.5 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.5" />
               </svg>
-              Between
+              Solace
             </a>
 
             <nav className="fs-nav-links" aria-label={t("Primary", "প্রধান")}>
@@ -234,21 +234,21 @@ export default function LandingPage() {
           </div>
 
           <footer className={`fs-footer fs-reveal ${ready ? "in" : ""}`} style={{ transitionDelay: "1500ms" }}>
-            © 2026 Between — engineered for deep work.
+            © 2026 Solace — engineered for deep work.
           </footer>
         </section>
 
         <div className="fs-below" ref={belowRef}>
-          {/* A day with Between — stepper with giant numerals */}
+          {/* A day with Solace — stepper with giant numerals */}
           <section className="fs-row fs-scroll" id="how-it-works" data-scroll="0">
             <div className="fs-row-head">
-              <h2>{t("A day with Between", "Between-এর সঙ্গে একটা দিন")}</h2>
+              <h2>{t("A day with Solace", "Solace-এর সঙ্গে একটা দিন")}</h2>
               <p className="fs-row-note">
                 {t("Three small things. No streak to protect, and a missed day changes nothing.", "তিনটা ছোট জিনিস। কোনো ধারাবাহিকতা রক্ষা করতে হয় না, একটা দিন বাদ পড়লেও কিছু বদলায় না।")}
               </p>
             </div>
 
-            <div className="fs-steps" role="tablist" aria-label={t("A day with Between", "Between-এর সঙ্গে একটা দিন")}>
+            <div className="fs-steps" role="tablist" aria-label={t("A day with Solace", "Solace-এর সঙ্গে একটা দিন")}>
               {steps.map((s, i) => (
                 <button
                   key={s.name}

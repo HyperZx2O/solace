@@ -3,8 +3,8 @@
 import { useEffect, useSyncExternalStore } from "react";
 import type { Language } from "./types";
 
-const STORAGE_KEY = "between.language";
-const EVENT = "between:language";
+const STORAGE_KEY = "Solace.language";
+const EVENT = "Solace:language";
 
 function readLang(): Language {
   try {
