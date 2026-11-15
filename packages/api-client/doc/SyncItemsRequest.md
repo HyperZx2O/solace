@@ -1,8 +1,8 @@
-# between_api.model.SyncItemsRequest
+# Solace_api.model.SyncItemsRequest
 
 ## Load the model package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 ## Properties

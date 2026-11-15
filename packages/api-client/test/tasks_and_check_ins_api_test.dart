@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for TasksAndCheckInsApi
 void main() {
-  final instance = BetweenApi().getTasksAndCheckInsApi();
+  final instance = SolaceApi().getTasksAndCheckInsApi();
 
   group(TasksAndCheckInsApi, () {
     // Mark today's task complete.

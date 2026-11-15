@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for DevicesApi
 void main() {
-  final instance = BetweenApi().getDevicesApi();
+  final instance = SolaceApi().getDevicesApi();
 
   group(DevicesApi, () {
     // Notification preferences. Crisis types cannot be disabled.

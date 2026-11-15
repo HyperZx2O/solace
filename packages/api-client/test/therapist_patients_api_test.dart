@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for TherapistPatientsApi
 void main() {
-  final instance = BetweenApi().getTherapistPatientsApi();
+  final instance = SolaceApi().getTherapistPatientsApi();
 
   group(TherapistPatientsApi, () {
     // Approve or hold a recommended stage change. Stage is never sent to the patient.

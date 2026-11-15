@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for StatusApi
 void main() {
-  final instance = BetweenApi().getStatusApi();
+  final instance = SolaceApi().getStatusApi();
 
   group(StatusApi, () {
     // Restriction level and copy key. Never returns stage.

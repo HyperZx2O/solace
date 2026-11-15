@@ -1,8 +1,8 @@
-# between_api.model.ListConsents200Response
+# Solace_api.model.ListConsents200Response
 
 ## Load the model package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 ## Properties

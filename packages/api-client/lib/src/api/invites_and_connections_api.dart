@@ -8,15 +8,15 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/api_util.dart';
-import 'package:between_api/src/model/accept_invite200_response.dart';
-import 'package:between_api/src/model/accept_invite_request.dart';
-import 'package:between_api/src/model/connect_by_code_request.dart';
-import 'package:between_api/src/model/create_invite201_response.dart';
-import 'package:between_api/src/model/create_invite_request.dart';
-import 'package:between_api/src/model/empty_envelope.dart';
-import 'package:between_api/src/model/error_envelope.dart';
-import 'package:between_api/src/model/list_pending_connections200_response.dart';
+import 'package:solace_api/src/api_util.dart';
+import 'package:solace_api/src/model/accept_invite200_response.dart';
+import 'package:solace_api/src/model/accept_invite_request.dart';
+import 'package:solace_api/src/model/connect_by_code_request.dart';
+import 'package:solace_api/src/model/create_invite201_response.dart';
+import 'package:solace_api/src/model/create_invite_request.dart';
+import 'package:solace_api/src/model/empty_envelope.dart';
+import 'package:solace_api/src/model/error_envelope.dart';
+import 'package:solace_api/src/model/list_pending_connections200_response.dart';
 
 class InvitesAndConnectionsApi {
 

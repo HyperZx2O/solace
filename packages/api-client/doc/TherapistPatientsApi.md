@@ -1,8 +1,8 @@
-# between_api.api.TherapistPatientsApi
+# Solace_api.api.TherapistPatientsApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -22,9 +22,9 @@ Approve or hold a recommended stage change. Stage is never sent to the patient.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistPatientsApi();
+final api = SolaceApi().getTherapistPatientsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 final ApproveStageChangeRequest approveStageChangeRequest = ; // ApproveStageChangeRequest | 
 
@@ -65,9 +65,9 @@ Weekly summary with the clinical-judgment disclaimer as a required field.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistPatientsApi();
+final api = SolaceApi().getTherapistPatientsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -106,9 +106,9 @@ One patient. 404 when there is no active connection, never 403 (no existence lea
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistPatientsApi();
+final api = SolaceApi().getTherapistPatientsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -147,9 +147,9 @@ Patients grouped by priority. No stage is ever returned.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistPatientsApi();
+final api = SolaceApi().getTherapistPatientsApi();
 
 try {
     final response = api.listTherapistPatients();

@@ -3,10 +3,10 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:between_api/src/model/crisis_tier.dart';
+import 'package:solace_api/src/model/crisis_tier.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:between_api/src/model/alert_state.dart';
-import 'package:between_api/src/model/therapist_alert_history_inner.dart';
+import 'package:solace_api/src/model/alert_state.dart';
+import 'package:solace_api/src/model/therapist_alert_history_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

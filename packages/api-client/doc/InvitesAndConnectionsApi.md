@@ -1,8 +1,8 @@
-# between_api.api.InvitesAndConnectionsApi
+# Solace_api.api.InvitesAndConnectionsApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -26,9 +26,9 @@ Accept an invite. No patient data is visible until the patient confirms (S18).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getInvitesAndConnectionsApi();
+final api = SolaceApi().getInvitesAndConnectionsApi();
 final AcceptInviteRequest acceptInviteRequest = ; // AcceptInviteRequest | 
 
 try {
@@ -67,9 +67,9 @@ The patient confirms. The only transition to `active`.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getInvitesAndConnectionsApi();
+final api = SolaceApi().getInvitesAndConnectionsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -108,9 +108,9 @@ Connect with a therapist using an in-app code.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getInvitesAndConnectionsApi();
+final api = SolaceApi().getInvitesAndConnectionsApi();
 final ConnectByCodeRequest connectByCodeRequest = ; // ConnectByCodeRequest | 
 
 try {
@@ -149,9 +149,9 @@ Invite a therapist by email. Expires after 48 hours (OD-2).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getInvitesAndConnectionsApi();
+final api = SolaceApi().getInvitesAndConnectionsApi();
 final CreateInviteRequest createInviteRequest = ; // CreateInviteRequest | 
 
 try {
@@ -190,9 +190,9 @@ The patient declines. Nothing is ever visible (S19).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getInvitesAndConnectionsApi();
+final api = SolaceApi().getInvitesAndConnectionsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -231,9 +231,9 @@ The patient ends the connection. Access stops immediately (R-CONN-1, S21).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getInvitesAndConnectionsApi();
+final api = SolaceApi().getInvitesAndConnectionsApi();
 
 try {
     final response = api.endConnection();
@@ -268,9 +268,9 @@ The patient says this is the wrong therapist.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getInvitesAndConnectionsApi();
+final api = SolaceApi().getInvitesAndConnectionsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -309,9 +309,9 @@ Connections waiting for the patient's confirmation.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getInvitesAndConnectionsApi();
+final api = SolaceApi().getInvitesAndConnectionsApi();
 
 try {
     final response = api.listPendingConnections();

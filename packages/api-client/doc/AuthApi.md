@@ -1,8 +1,8 @@
-# between_api.api.AuthApi
+# Solace_api.api.AuthApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -25,9 +25,9 @@ The authenticated user. The client routes on `role`.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getAuthApi();
+final api = SolaceApi().getAuthApi();
 
 try {
     final response = api.getMe();
@@ -62,9 +62,9 @@ List active sessions for the current user.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getAuthApi();
+final api = SolaceApi().getAuthApi();
 
 try {
     final response = api.listSessions();
@@ -99,9 +99,9 @@ Exchange credentials for an access and refresh token.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getAuthApi();
+final api = SolaceApi().getAuthApi();
 final LoginRequest loginRequest = ; // LoginRequest | 
 
 try {
@@ -140,9 +140,9 @@ Revoke the current session.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getAuthApi();
+final api = SolaceApi().getAuthApi();
 final LogoutRequest logoutRequest = ; // LogoutRequest | 
 
 try {
@@ -181,9 +181,9 @@ Rotate a refresh token. Reuse revokes the whole session family.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getAuthApi();
+final api = SolaceApi().getAuthApi();
 final RefreshRequest refreshRequest = ; // RefreshRequest | 
 
 try {
@@ -222,9 +222,9 @@ Revoke one session by id.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getAuthApi();
+final api = SolaceApi().getAuthApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -263,9 +263,9 @@ Create a patient account. Age 18+ is enforced server-side (OD-3).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getAuthApi();
+final api = SolaceApi().getAuthApi();
 final SignupRequest signupRequest = {"email":"user@example.com","password":"correct-horse-battery-staple","ageConfirmed":true,"appVersion":"1.0.0"}; // SignupRequest | 
 
 try {

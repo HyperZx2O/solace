@@ -1,8 +1,8 @@
-# between_api.model.ErrorEnvelope
+# Solace_api.model.ErrorEnvelope
 
 ## Load the model package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 ## Properties

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for SafetyPlanApi
 void main() {
-  final instance = BetweenApi().getSafetyPlanApi();
+  final instance = SolaceApi().getSafetyPlanApi();
 
   group(SafetyPlanApi, () {
     // The patient's own safety plan. Field 4 is never shared.

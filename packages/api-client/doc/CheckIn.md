@@ -1,8 +1,8 @@
-# between_api.model.CheckIn
+# Solace_api.model.CheckIn
 
 ## Load the model package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# between_api.api.HealthApi
+# Solace_api.api.HealthApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -20,9 +20,9 @@ Liveness. No dependencies checked.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getHealthApi();
+final api = SolaceApi().getHealthApi();
 
 try {
     final response = api.getHealth();
@@ -57,9 +57,9 @@ Readiness. Checks PostgreSQL and Redis.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getHealthApi();
+final api = SolaceApi().getHealthApi();
 
 try {
     final response = api.getReady();

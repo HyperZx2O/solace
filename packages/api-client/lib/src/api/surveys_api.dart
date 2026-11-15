@@ -8,16 +8,16 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/api_util.dart';
-import 'package:between_api/src/model/complete_survey200_response.dart';
-import 'package:between_api/src/model/complete_survey_request.dart';
-import 'package:between_api/src/model/empty_envelope.dart';
-import 'package:between_api/src/model/error_envelope.dart';
-import 'package:between_api/src/model/get_survey200_response.dart';
-import 'package:between_api/src/model/list_survey_results200_response.dart';
-import 'package:between_api/src/model/retake_survey_request.dart';
-import 'package:between_api/src/model/submit_survey_responses201_response.dart';
-import 'package:between_api/src/model/survey_responses_request.dart';
+import 'package:solace_api/src/api_util.dart';
+import 'package:solace_api/src/model/complete_survey200_response.dart';
+import 'package:solace_api/src/model/complete_survey_request.dart';
+import 'package:solace_api/src/model/empty_envelope.dart';
+import 'package:solace_api/src/model/error_envelope.dart';
+import 'package:solace_api/src/model/get_survey200_response.dart';
+import 'package:solace_api/src/model/list_survey_results200_response.dart';
+import 'package:solace_api/src/model/retake_survey_request.dart';
+import 'package:solace_api/src/model/submit_survey_responses201_response.dart';
+import 'package:solace_api/src/model/survey_responses_request.dart';
 
 class SurveysApi {
 

@@ -8,8 +8,8 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/model/sync_items200_response.dart';
-import 'package:between_api/src/model/sync_items_request.dart';
+import 'package:solace_api/src/model/sync_items200_response.dart';
+import 'package:solace_api/src/model/sync_items_request.dart';
 
 class SyncApi {
 

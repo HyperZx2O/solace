@@ -8,11 +8,11 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/api_util.dart';
-import 'package:between_api/src/model/error_envelope.dart';
-import 'package:between_api/src/model/get_therapist_alert200_response.dart';
-import 'package:between_api/src/model/list_therapist_alerts200_response.dart';
-import 'package:between_api/src/model/resolve_alert_request.dart';
+import 'package:solace_api/src/api_util.dart';
+import 'package:solace_api/src/model/error_envelope.dart';
+import 'package:solace_api/src/model/get_therapist_alert200_response.dart';
+import 'package:solace_api/src/model/list_therapist_alerts200_response.dart';
+import 'package:solace_api/src/model/resolve_alert_request.dart';
 
 class TherapistAlertsApi {
 

@@ -1,8 +1,8 @@
-# between_api.model.SignupRequest
+# Solace_api.model.SignupRequest
 
 ## Load the model package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 ## Properties

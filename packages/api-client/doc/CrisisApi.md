@@ -1,8 +1,8 @@
-# between_api.api.CrisisApi
+# Solace_api.api.CrisisApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -22,9 +22,9 @@ Answer the Tier 2 consent prompt. No detail is sent on refusal (S3).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getCrisisApi();
+final api = SolaceApi().getCrisisApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 final AnswerTier2ConsentRequest answerTier2ConsentRequest = ; // AnswerTier2ConsentRequest | 
 
@@ -65,9 +65,9 @@ Synchronous crisis check. Target p95 under 2 seconds. Tier 3 is decided by the r
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getCrisisApi();
+final api = SolaceApi().getCrisisApi();
 final CrisisCheckRequest crisisCheckRequest = ; // CrisisCheckRequest | 
 
 try {
@@ -106,9 +106,9 @@ Bundled crisis resources. Works without a valid token (S22).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getCrisisApi();
+final api = SolaceApi().getCrisisApi();
 
 try {
     final response = api.getCrisisResources();
@@ -143,9 +143,9 @@ The patient asks for help. Always accepted while authenticated.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getCrisisApi();
+final api = SolaceApi().getCrisisApi();
 final SelfInitiatedCrisisRequest selfInitiatedCrisisRequest = ; // SelfInitiatedCrisisRequest | 
 
 try {

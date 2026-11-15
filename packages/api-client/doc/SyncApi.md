@@ -1,8 +1,8 @@
-# between_api.api.SyncApi
+# Solace_api.api.SyncApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -19,9 +19,9 @@ Batch-sync offline items. Each item is accepted, duplicate, historical_flagged o
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSyncApi();
+final api = SolaceApi().getSyncApi();
 final SyncItemsRequest syncItemsRequest = ; // SyncItemsRequest | 
 
 try {

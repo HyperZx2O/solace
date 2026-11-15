@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for ConsentApi
 void main() {
-  final instance = BetweenApi().getConsentApi();
+  final instance = SolaceApi().getConsentApi();
 
   group(ConsentApi, () {
     // Step 2. Without this, monitoring stays ON (R-CONSENT-3, S14).

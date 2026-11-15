@@ -4,35 +4,35 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
-import 'package:between_api/src/serializers.dart';
-import 'package:between_api/src/auth/api_key_auth.dart';
-import 'package:between_api/src/auth/basic_auth.dart';
-import 'package:between_api/src/auth/bearer_auth.dart';
-import 'package:between_api/src/auth/oauth.dart';
-import 'package:between_api/src/api/auth_api.dart';
-import 'package:between_api/src/api/consent_api.dart';
-import 'package:between_api/src/api/crisis_api.dart';
-import 'package:between_api/src/api/devices_api.dart';
-import 'package:between_api/src/api/health_api.dart';
-import 'package:between_api/src/api/invites_and_connections_api.dart';
-import 'package:between_api/src/api/journals_api.dart';
-import 'package:between_api/src/api/privacy_api.dart';
-import 'package:between_api/src/api/safety_plan_api.dart';
-import 'package:between_api/src/api/status_api.dart';
-import 'package:between_api/src/api/surveys_api.dart';
-import 'package:between_api/src/api/sync_api.dart';
-import 'package:between_api/src/api/tasks_and_check_ins_api.dart';
-import 'package:between_api/src/api/therapist_alerts_api.dart';
-import 'package:between_api/src/api/therapist_onboarding_api.dart';
-import 'package:between_api/src/api/therapist_patients_api.dart';
+import 'package:solace_api/src/serializers.dart';
+import 'package:solace_api/src/auth/api_key_auth.dart';
+import 'package:solace_api/src/auth/basic_auth.dart';
+import 'package:solace_api/src/auth/bearer_auth.dart';
+import 'package:solace_api/src/auth/oauth.dart';
+import 'package:solace_api/src/api/auth_api.dart';
+import 'package:solace_api/src/api/consent_api.dart';
+import 'package:solace_api/src/api/crisis_api.dart';
+import 'package:solace_api/src/api/devices_api.dart';
+import 'package:solace_api/src/api/health_api.dart';
+import 'package:solace_api/src/api/invites_and_connections_api.dart';
+import 'package:solace_api/src/api/journals_api.dart';
+import 'package:solace_api/src/api/privacy_api.dart';
+import 'package:solace_api/src/api/safety_plan_api.dart';
+import 'package:solace_api/src/api/status_api.dart';
+import 'package:solace_api/src/api/surveys_api.dart';
+import 'package:solace_api/src/api/sync_api.dart';
+import 'package:solace_api/src/api/tasks_and_check_ins_api.dart';
+import 'package:solace_api/src/api/therapist_alerts_api.dart';
+import 'package:solace_api/src/api/therapist_onboarding_api.dart';
+import 'package:solace_api/src/api/therapist_patients_api.dart';
 
-class BetweenApi {
+class SolaceApi {
   static const String basePath = r'http://localhost:3000';
 
   final Dio dio;
   final Serializers serializers;
 
-  BetweenApi({
+  SolaceApi({
     Dio? dio,
     Serializers? serializers,
     String? basePathOverride,

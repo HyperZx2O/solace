@@ -1,8 +1,8 @@
-# between_api.api.TherapistOnboardingApi
+# Solace_api.api.TherapistOnboardingApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -20,9 +20,9 @@ Record DSA, crisis responsibility and emergency statement acknowledgements.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistOnboardingApi();
+final api = SolaceApi().getTherapistOnboardingApi();
 final AcknowledgeTherapistTermsRequest acknowledgeTherapistTermsRequest = ; // AcknowledgeTherapistTermsRequest | 
 
 try {
@@ -61,9 +61,9 @@ Create a therapist profile after accepting an invite. Never open signup.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistOnboardingApi();
+final api = SolaceApi().getTherapistOnboardingApi();
 final TherapistOnboardingRequest therapistOnboardingRequest = ; // TherapistOnboardingRequest | 
 
 try {

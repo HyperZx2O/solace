@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for InvitesAndConnectionsApi
 void main() {
-  final instance = BetweenApi().getInvitesAndConnectionsApi();
+  final instance = SolaceApi().getInvitesAndConnectionsApi();
 
   group(InvitesAndConnectionsApi, () {
     // Accept an invite. No patient data is visible until the patient confirms (S18).

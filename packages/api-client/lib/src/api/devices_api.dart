@@ -8,15 +8,15 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/api_util.dart';
-import 'package:between_api/src/model/empty_envelope.dart';
-import 'package:between_api/src/model/error_envelope.dart';
-import 'package:between_api/src/model/get_notification_preferences200_response.dart';
-import 'package:between_api/src/model/notification_type.dart';
-import 'package:between_api/src/model/register_device201_response.dart';
-import 'package:between_api/src/model/register_device_request.dart';
-import 'package:between_api/src/model/set_notification_preference200_response.dart';
-import 'package:between_api/src/model/set_notification_preference_request.dart';
+import 'package:solace_api/src/api_util.dart';
+import 'package:solace_api/src/model/empty_envelope.dart';
+import 'package:solace_api/src/model/error_envelope.dart';
+import 'package:solace_api/src/model/get_notification_preferences200_response.dart';
+import 'package:solace_api/src/model/notification_type.dart';
+import 'package:solace_api/src/model/register_device201_response.dart';
+import 'package:solace_api/src/model/register_device_request.dart';
+import 'package:solace_api/src/model/set_notification_preference200_response.dart';
+import 'package:solace_api/src/model/set_notification_preference_request.dart';
 
 class DevicesApi {
 

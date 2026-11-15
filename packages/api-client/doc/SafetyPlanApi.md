@@ -1,8 +1,8 @@
-# between_api.api.SafetyPlanApi
+# Solace_api.api.SafetyPlanApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -22,9 +22,9 @@ The patient's own safety plan. Field 4 is never shared.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSafetyPlanApi();
+final api = SolaceApi().getSafetyPlanApi();
 
 try {
     final response = api.getSafetyPlan();
@@ -59,9 +59,9 @@ Replace the safety plan fields.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSafetyPlanApi();
+final api = SolaceApi().getSafetyPlanApi();
 final SafetyPlanFields safetyPlanFields = ; // SafetyPlanFields | 
 
 try {
@@ -100,9 +100,9 @@ Update one field. Field 4 is stored but always excluded from sharing.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSafetyPlanApi();
+final api = SolaceApi().getSafetyPlanApi();
 final int n = 56; // int | 
 final SetSafetyPlanFieldRequest setSafetyPlanFieldRequest = ; // SetSafetyPlanFieldRequest | 
 
@@ -143,9 +143,9 @@ Share or stop sharing fields 1, 2, 3 and 5 with the therapist.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSafetyPlanApi();
+final api = SolaceApi().getSafetyPlanApi();
 final SetSafetyPlanSharingRequest setSafetyPlanSharingRequest = ; // SetSafetyPlanSharingRequest | 
 
 try {

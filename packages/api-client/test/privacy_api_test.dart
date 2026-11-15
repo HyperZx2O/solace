@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for PrivacyApi
 void main() {
-  final instance = BetweenApi().getPrivacyApi();
+  final instance = SolaceApi().getPrivacyApi();
 
   group(PrivacyApi, () {
     // Step 2 of deletion.

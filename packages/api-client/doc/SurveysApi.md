@@ -1,8 +1,8 @@
-# between_api.api.SurveysApi
+# Solace_api.api.SurveysApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -23,9 +23,9 @@ Score and complete a survey. PHQ-9 item 9 becomes a possible concern (OD-10).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSurveysApi();
+final api = SolaceApi().getSurveysApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 final CompleteSurveyRequest completeSurveyRequest = ; // CompleteSurveyRequest | 
 
@@ -66,9 +66,9 @@ Survey definition and items.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSurveysApi();
+final api = SolaceApi().getSurveysApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -107,9 +107,9 @@ Survey results for the current patient.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSurveysApi();
+final api = SolaceApi().getSurveysApi();
 
 try {
     final response = api.listSurveyResults();
@@ -144,9 +144,9 @@ Request a retake. Rejected inside the 14-day cooldown.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSurveysApi();
+final api = SolaceApi().getSurveysApi();
 final RetakeSurveyRequest retakeSurveyRequest = ; // RetakeSurveyRequest | 
 
 try {
@@ -185,9 +185,9 @@ Save item-level answers. Idempotent on `clientId`.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getSurveysApi();
+final api = SolaceApi().getSurveysApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 final SurveyResponsesRequest surveyResponsesRequest = ; // SurveyResponsesRequest | 
 

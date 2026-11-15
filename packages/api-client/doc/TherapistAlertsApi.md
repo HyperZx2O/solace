@@ -1,8 +1,8 @@
-# between_api.api.TherapistAlertsApi
+# Solace_api.api.TherapistAlertsApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -23,9 +23,9 @@ One alert. Requires re-authentication when the session is older than 4 hours (B0
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistAlertsApi();
+final api = SolaceApi().getTherapistAlertsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -64,9 +64,9 @@ Open and recent alerts for connected patients.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistAlertsApi();
+final api = SolaceApi().getTherapistAlertsApi();
 
 try {
     final response = api.listTherapistAlerts();
@@ -101,9 +101,9 @@ Resolve. All three checklist items are required (S7).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistAlertsApi();
+final api = SolaceApi().getTherapistAlertsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 final ResolveAlertRequest resolveAlertRequest = ; // ResolveAlertRequest | 
 
@@ -144,9 +144,9 @@ Mark reviewed. Starts the 60-second undo window.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistAlertsApi();
+final api = SolaceApi().getTherapistAlertsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -185,9 +185,9 @@ Undo the review inside 60 seconds. Escalation continues (S5, S6).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTherapistAlertsApi();
+final api = SolaceApi().getTherapistAlertsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {

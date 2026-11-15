@@ -1,8 +1,8 @@
-# between_api.model.Role
+# Solace_api.model.Role
 
 ## Load the model package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 ## Properties

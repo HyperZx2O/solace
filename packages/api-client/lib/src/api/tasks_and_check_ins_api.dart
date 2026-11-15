@@ -8,16 +8,16 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/api_util.dart';
-import 'package:between_api/src/model/check_in_request.dart';
-import 'package:between_api/src/model/complete_task200_response.dart';
-import 'package:between_api/src/model/create_check_in201_response.dart';
-import 'package:between_api/src/model/empty_envelope.dart';
-import 'package:between_api/src/model/error_envelope.dart';
-import 'package:between_api/src/model/explain_task200_response.dart';
-import 'package:between_api/src/model/get_today200_response.dart';
-import 'package:between_api/src/model/list_check_ins200_response.dart';
-import 'package:between_api/src/model/task_feedback_request.dart';
+import 'package:solace_api/src/api_util.dart';
+import 'package:solace_api/src/model/check_in_request.dart';
+import 'package:solace_api/src/model/complete_task200_response.dart';
+import 'package:solace_api/src/model/create_check_in201_response.dart';
+import 'package:solace_api/src/model/empty_envelope.dart';
+import 'package:solace_api/src/model/error_envelope.dart';
+import 'package:solace_api/src/model/explain_task200_response.dart';
+import 'package:solace_api/src/model/get_today200_response.dart';
+import 'package:solace_api/src/model/list_check_ins200_response.dart';
+import 'package:solace_api/src/model/task_feedback_request.dart';
 
 class TasksAndCheckInsApi {
 

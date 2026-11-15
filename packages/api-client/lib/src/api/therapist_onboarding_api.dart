@@ -8,10 +8,10 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/model/acknowledge_therapist_terms_request.dart';
-import 'package:between_api/src/model/empty_envelope.dart';
-import 'package:between_api/src/model/therapist_onboarding201_response.dart';
-import 'package:between_api/src/model/therapist_onboarding_request.dart';
+import 'package:solace_api/src/model/acknowledge_therapist_terms_request.dart';
+import 'package:solace_api/src/model/empty_envelope.dart';
+import 'package:solace_api/src/model/therapist_onboarding201_response.dart';
+import 'package:solace_api/src/model/therapist_onboarding_request.dart';
 
 class TherapistOnboardingApi {
 

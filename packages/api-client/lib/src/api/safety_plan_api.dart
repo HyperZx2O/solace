@@ -8,11 +8,11 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/api_util.dart';
-import 'package:between_api/src/model/get_safety_plan200_response.dart';
-import 'package:between_api/src/model/safety_plan_fields.dart';
-import 'package:between_api/src/model/set_safety_plan_field_request.dart';
-import 'package:between_api/src/model/set_safety_plan_sharing_request.dart';
+import 'package:solace_api/src/api_util.dart';
+import 'package:solace_api/src/model/get_safety_plan200_response.dart';
+import 'package:solace_api/src/model/safety_plan_fields.dart';
+import 'package:solace_api/src/model/set_safety_plan_field_request.dart';
+import 'package:solace_api/src/model/set_safety_plan_sharing_request.dart';
 
 class SafetyPlanApi {
 

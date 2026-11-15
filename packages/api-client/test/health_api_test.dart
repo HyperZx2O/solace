@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for HealthApi
 void main() {
-  final instance = BetweenApi().getHealthApi();
+  final instance = SolaceApi().getHealthApi();
 
   group(HealthApi, () {
     // Liveness. No dependencies checked.

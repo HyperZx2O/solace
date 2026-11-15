@@ -8,14 +8,14 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/api_util.dart';
-import 'package:between_api/src/model/empty_envelope.dart';
-import 'package:between_api/src/model/error_envelope.dart';
-import 'package:between_api/src/model/get_access_log200_response.dart';
-import 'package:between_api/src/model/pause_processing_request.dart';
-import 'package:between_api/src/model/request_deletion201_response.dart';
-import 'package:between_api/src/model/request_export201_response.dart';
-import 'package:between_api/src/model/start_crisis_monitoring_withdrawal_request.dart';
+import 'package:solace_api/src/api_util.dart';
+import 'package:solace_api/src/model/empty_envelope.dart';
+import 'package:solace_api/src/model/error_envelope.dart';
+import 'package:solace_api/src/model/get_access_log200_response.dart';
+import 'package:solace_api/src/model/pause_processing_request.dart';
+import 'package:solace_api/src/model/request_deletion201_response.dart';
+import 'package:solace_api/src/model/request_export201_response.dart';
+import 'package:solace_api/src/model/start_crisis_monitoring_withdrawal_request.dart';
 
 class PrivacyApi {
 

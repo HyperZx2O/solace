@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for SurveysApi
 void main() {
-  final instance = BetweenApi().getSurveysApi();
+  final instance = SolaceApi().getSurveysApi();
 
   group(SurveysApi, () {
     // Score and complete a survey. PHQ-9 item 9 becomes a possible concern (OD-10).

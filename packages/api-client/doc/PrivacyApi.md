@@ -1,8 +1,8 @@
-# between_api.api.PrivacyApi
+# Solace_api.api.PrivacyApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -24,9 +24,9 @@ Step 2 of deletion.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getPrivacyApi();
+final api = SolaceApi().getPrivacyApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -65,9 +65,9 @@ Forward-only, append-only view of who opened what.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getPrivacyApi();
+final api = SolaceApi().getPrivacyApi();
 
 try {
     final response = api.getAccessLog();
@@ -102,9 +102,9 @@ Export status.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getPrivacyApi();
+final api = SolaceApi().getPrivacyApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -143,9 +143,9 @@ Account becomes read-only. Crisis monitoring follows the consent state.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getPrivacyApi();
+final api = SolaceApi().getPrivacyApi();
 final PauseProcessingRequest pauseProcessingRequest = ; // PauseProcessingRequest | 
 
 try {
@@ -184,9 +184,9 @@ Step 1 of deletion.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getPrivacyApi();
+final api = SolaceApi().getPrivacyApi();
 final StartCrisisMonitoringWithdrawalRequest startCrisisMonitoringWithdrawalRequest = ; // StartCrisisMonitoringWithdrawalRequest | 
 
 try {
@@ -225,9 +225,9 @@ Request a data export. Therapist MFA is required for therapist exports.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getPrivacyApi();
+final api = SolaceApi().getPrivacyApi();
 final StartCrisisMonitoringWithdrawalRequest startCrisisMonitoringWithdrawalRequest = ; // StartCrisisMonitoringWithdrawalRequest | 
 
 try {

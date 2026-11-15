@@ -1,8 +1,8 @@
-# between_api.model.AnswerTier2ConsentRequest
+# Solace_api.model.AnswerTier2ConsentRequest
 
 ## Load the model package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 ## Properties

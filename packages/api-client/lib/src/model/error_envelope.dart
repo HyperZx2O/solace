@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:between_api/src/model/error_envelope_error.dart';
+import 'package:solace_api/src/model/error_envelope_error.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';

@@ -8,9 +8,9 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/model/error_envelope.dart';
-import 'package:between_api/src/model/health_envelope.dart';
-import 'package:between_api/src/model/ready_envelope.dart';
+import 'package:solace_api/src/model/error_envelope.dart';
+import 'package:solace_api/src/model/health_envelope.dart';
+import 'package:solace_api/src/model/ready_envelope.dart';
 
 class HealthApi {
 

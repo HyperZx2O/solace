@@ -1,8 +1,8 @@
-# between_api.api.StatusApi
+# Solace_api.api.StatusApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -19,9 +19,9 @@ Restriction level and copy key. Never returns stage.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getStatusApi();
+final api = SolaceApi().getStatusApi();
 
 try {
     final response = api.getStatus();

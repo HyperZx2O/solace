@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for AuthApi
 void main() {
-  final instance = BetweenApi().getAuthApi();
+  final instance = SolaceApi().getAuthApi();
 
   group(AuthApi, () {
     // The authenticated user. The client routes on `role`.

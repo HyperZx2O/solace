@@ -8,16 +8,16 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:between_api/src/api_util.dart';
-import 'package:between_api/src/model/auth_envelope.dart';
-import 'package:between_api/src/model/empty_envelope.dart';
-import 'package:between_api/src/model/error_envelope.dart';
-import 'package:between_api/src/model/get_me200_response.dart';
-import 'package:between_api/src/model/list_sessions200_response.dart';
-import 'package:between_api/src/model/login_request.dart';
-import 'package:between_api/src/model/logout_request.dart';
-import 'package:between_api/src/model/refresh_request.dart';
-import 'package:between_api/src/model/signup_request.dart';
+import 'package:solace_api/src/api_util.dart';
+import 'package:solace_api/src/model/auth_envelope.dart';
+import 'package:solace_api/src/model/empty_envelope.dart';
+import 'package:solace_api/src/model/error_envelope.dart';
+import 'package:solace_api/src/model/get_me200_response.dart';
+import 'package:solace_api/src/model/list_sessions200_response.dart';
+import 'package:solace_api/src/model/login_request.dart';
+import 'package:solace_api/src/model/logout_request.dart';
+import 'package:solace_api/src/model/refresh_request.dart';
+import 'package:solace_api/src/model/signup_request.dart';
 
 class AuthApi {
 

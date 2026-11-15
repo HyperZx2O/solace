@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for TherapistAlertsApi
 void main() {
-  final instance = BetweenApi().getTherapistAlertsApi();
+  final instance = SolaceApi().getTherapistAlertsApi();
 
   group(TherapistAlertsApi, () {
     // One alert. Requires re-authentication when the session is older than 4 hours (B08, S16).

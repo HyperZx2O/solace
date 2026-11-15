@@ -1,8 +1,8 @@
-# between_api.model.SurveyResponsesRequest
+# Solace_api.model.SurveyResponsesRequest
 
 ## Load the model package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 ## Properties

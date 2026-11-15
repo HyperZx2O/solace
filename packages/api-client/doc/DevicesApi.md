@@ -1,8 +1,8 @@
-# between_api.api.DevicesApi
+# Solace_api.api.DevicesApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -22,9 +22,9 @@ Notification preferences. Crisis types cannot be disabled.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getDevicesApi();
+final api = SolaceApi().getDevicesApi();
 
 try {
     final response = api.getNotificationPreferences();
@@ -59,9 +59,9 @@ Register an FCM token.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getDevicesApi();
+final api = SolaceApi().getDevicesApi();
 final RegisterDeviceRequest registerDeviceRequest = ; // RegisterDeviceRequest | 
 
 try {
@@ -100,9 +100,9 @@ Enable or disable one notification type.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getDevicesApi();
+final api = SolaceApi().getDevicesApi();
 final NotificationType type = ; // NotificationType | 
 final SetNotificationPreferenceRequest setNotificationPreferenceRequest = ; // SetNotificationPreferenceRequest | 
 
@@ -143,9 +143,9 @@ Remove a device token.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getDevicesApi();
+final api = SolaceApi().getDevicesApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {

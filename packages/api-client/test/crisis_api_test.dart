@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for CrisisApi
 void main() {
-  final instance = BetweenApi().getCrisisApi();
+  final instance = SolaceApi().getCrisisApi();
 
   group(CrisisApi, () {
     // Answer the Tier 2 consent prompt. No detail is sent on refusal (S3).

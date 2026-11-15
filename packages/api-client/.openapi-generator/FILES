@@ -142,7 +142,7 @@ doc/TherapistPatientsApi.md
 doc/TherapistProfile.md
 doc/Today.md
 doc/WithdrawalRequest.md
-lib/between_api.dart
+lib/solace_api.dart
 lib/src/api.dart
 lib/src/api/auth_api.dart
 lib/src/api/consent_api.dart

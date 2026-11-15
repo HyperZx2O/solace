@@ -1,8 +1,8 @@
-# between_api.api.ConsentApi
+# Solace_api.api.ConsentApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -23,9 +23,9 @@ Step 2. Without this, monitoring stays ON (R-CONSENT-3, S14).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getConsentApi();
+final api = SolaceApi().getConsentApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -64,9 +64,9 @@ Append-only consent history.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getConsentApi();
+final api = SolaceApi().getConsentApi();
 
 try {
     final response = api.consentHistory();
@@ -101,9 +101,9 @@ Current consent state for every item.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getConsentApi();
+final api = SolaceApi().getConsentApi();
 
 try {
     final response = api.listConsents();
@@ -138,9 +138,9 @@ Grant or refuse one consent item.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getConsentApi();
+final api = SolaceApi().getConsentApi();
 final ConsentItem item = ; // ConsentItem | 
 final SetConsentRequest setConsentRequest = ; // SetConsentRequest | 
 
@@ -181,9 +181,9 @@ Step 1 of withdrawing crisis monitoring.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getConsentApi();
+final api = SolaceApi().getConsentApi();
 final StartCrisisMonitoringWithdrawalRequest startCrisisMonitoringWithdrawalRequest = ; // StartCrisisMonitoringWithdrawalRequest | 
 
 try {

@@ -1,8 +1,8 @@
-# between_api.api.TasksAndCheckInsApi
+# Solace_api.api.TasksAndCheckInsApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -25,9 +25,9 @@ Mark today's task complete.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTasksAndCheckInsApi();
+final api = SolaceApi().getTasksAndCheckInsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -66,9 +66,9 @@ Daily check-in. Idempotent on `clientId` (S9).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTasksAndCheckInsApi();
+final api = SolaceApi().getTasksAndCheckInsApi();
 final CheckInRequest checkInRequest = ; // CheckInRequest | 
 
 try {
@@ -107,9 +107,9 @@ Why this task was chosen. No clinical reasoning is exposed.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTasksAndCheckInsApi();
+final api = SolaceApi().getTasksAndCheckInsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 
 try {
@@ -148,9 +148,9 @@ Today's task, check-in state and swap availability.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTasksAndCheckInsApi();
+final api = SolaceApi().getTasksAndCheckInsApi();
 
 try {
     final response = api.getToday();
@@ -185,9 +185,9 @@ Recent check-ins for the mood series.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTasksAndCheckInsApi();
+final api = SolaceApi().getTasksAndCheckInsApi();
 final int days = 56; // int | 
 
 try {
@@ -226,9 +226,9 @@ Swap today's task. At most one swap per day (R-SWAP-1).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTasksAndCheckInsApi();
+final api = SolaceApi().getTasksAndCheckInsApi();
 
 try {
     final response = api.swapTask();
@@ -263,9 +263,9 @@ Rate how much the task helped.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getTasksAndCheckInsApi();
+final api = SolaceApi().getTasksAndCheckInsApi();
 final String id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // String | 
 final TaskFeedbackRequest taskFeedbackRequest = ; // TaskFeedbackRequest | 
 

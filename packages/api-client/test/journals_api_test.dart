@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:between_api/between_api.dart';
+import 'package:solace_api/solace_api.dart';
 
 
 /// tests for JournalsApi
 void main() {
-  final instance = BetweenApi().getJournalsApi();
+  final instance = SolaceApi().getJournalsApi();
 
   group(JournalsApi, () {
     // Save an entry. Always succeeds, even while the AI is down (B02, S8).

@@ -1,8 +1,8 @@
-# between_api.api.JournalsApi
+# Solace_api.api.JournalsApi
 
 ## Load the API package
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 ```
 
 All URIs are relative to *http://localhost:3000*
@@ -21,9 +21,9 @@ Save an entry. Always succeeds, even while the AI is down (B02, S8).
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getJournalsApi();
+final api = SolaceApi().getJournalsApi();
 final JournalKind kind = ; // JournalKind | 
 final JournalEntryRequest journalEntryRequest = ; // JournalEntryRequest | 
 
@@ -64,9 +64,9 @@ Entries for one journal kind.
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getJournalsApi();
+final api = SolaceApi().getJournalsApi();
 final JournalKind kind = ; // JournalKind | 
 
 try {
@@ -105,9 +105,9 @@ Set journal privacy. Monitoring cannot be OFF while the journal is hidden (R-CON
 
 ### Example
 ```dart
-import 'package:between_api/api.dart';
+import 'package:Solace_api/api.dart';
 
-final api = BetweenApi().getJournalsApi();
+final api = SolaceApi().getJournalsApi();
 final SetJournalPrivacyRequest setJournalPrivacyRequest = ; // SetJournalPrivacyRequest | 
 
 try {
