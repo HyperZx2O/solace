@@ -22,3 +22,8 @@ tools/openapi/.cache/
 # Local notes and Maestro screenshot dumps (root only)
 /docs/
 *_verified.png
+
+# Android release signing material
+*.jks
+*.keystore
+key.properties
