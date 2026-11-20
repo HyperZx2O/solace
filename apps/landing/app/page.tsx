@@ -6,14 +6,14 @@ import { HeroCompanion, type CompanionState } from "@/components/hero-companion"
 import { LanguageSwitch, useI18n } from "@/lib/i18n";
 import { SmoothScroll } from "@/components/smooth-scroll";
 
-const WAITLIST_KEY = "Solace.waitlist";
-
 export default function LandingPage() {
   const { t } = useI18n();
   const [ready, setReady] = useState(false);
   const [step, setStep] = useState(0);
   const [tile, setTile] = useState<number | null>(null);
   const [email, setEmail] = useState<string | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
   const belowRef = useRef<HTMLDivElement>(null);
 
   // One emotional anchor: the creature mirrors what the visitor just did.
@@ -136,22 +136,36 @@ export default function LandingPage() {
     },
   ];
 
-  function submitWaitlist(e: React.FormEvent) {
+  async function submitWaitlist(e: React.FormEvent) {
     e.preventDefault();
-    const form = e.currentTarget;
-    const input = form.querySelector("input");
-    if (!input) return;
-    const value = input.value.trim();
-    if (!value) return;
+    const form = e.currentTarget as HTMLFormElement;
+    const value = String(new FormData(form).get("email") ?? "").trim();
+    const trap = String(new FormData(form).get("website") ?? "");
+    if (!value || saving) return;
+
+    setSaving(true);
+    setSaveError(null);
     try {
-      const raw = window.localStorage.getItem(WAITLIST_KEY);
-      const list: string[] = raw ? JSON.parse(raw) : [];
-      if (!list.includes(value)) list.push(value);
-      window.localStorage.setItem(WAITLIST_KEY, JSON.stringify(list));
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ email: value, website: trap }),
+      });
+      const data = await res.json().catch(() => ({ ok: false }));
+      if (!res.ok || !data.ok) {
+        setSaveError(
+          res.status === 429
+            ? t("Too many tries — wait a minute.", "অনেকবার চেষ্টা হয়েছে — একটু অপেক্ষা করুন।")
+            : t("That didn't save. Please try again.", "সংরক্ষণ হয়নি। আবার চেষ্টা করুন।"),
+        );
+        return;
+      }
+      setEmail(value);
     } catch {
-      /* storage unavailable — still confirm to the user */
+      setSaveError(t("That didn't save. Please try again.", "সংরক্ষণ হয়নি। আবার চেষ্টা করুন।"));
+    } finally {
+      setSaving(false);
     }
-    setEmail(value);
   }
 
   return (
@@ -218,12 +232,18 @@ export default function LandingPage() {
                     <input
                       className="fs-input"
                       type="email"
+                      name="email"
                       required
+                      autoComplete="email"
                       placeholder={t("Enter your email", "আপনার ইমেইল")}
                       aria-label={t("Enter your email", "আপনার ইমেইল")}
                     />
-                    <button className="fs-pill" type="submit">{t("Join Waitlist", "ওয়েটলিস্টে যোগ")}</button>
+                    <input className="fs-trap" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+                    <button className="fs-pill" type="submit" disabled={saving} aria-busy={saving}>
+                      {t("Join Waitlist", "ওয়েটলিস্টে যোগ")}
+                    </button>
                   </div>
+                  {saveError ? <p className="fs-error" role="alert">{saveError}</p> : null}
                 </form>
               )}
             </div>
@@ -383,12 +403,16 @@ export default function LandingPage() {
                           <input
                             className="fs-input"
                             type="email"
+                            name="email"
                             required
+                            autoComplete="email"
                             placeholder={t("Enter your email", "আপনার ইমেইল")}
                             aria-label={t("Enter your email", "আপনার ইমেইল")}
                           />
-                          <button className="fs-pill" type="submit">{t("Join Waitlist", "ওয়েটলিস্টে যোগ")}</button>
+                          <input className="fs-trap" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+                          <button className="fs-pill" type="submit" disabled={saving} aria-busy={saving}>{t("Join Waitlist", "ওয়েটলিস্টে যোগ")}</button>
                         </div>
+                        {saveError ? <p className="fs-error" role="alert">{saveError}</p> : null}
                       </form>
                     )}
                     <p className="fs-panel-note">
